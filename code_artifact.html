@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر ورود - للحلويات والكيك الأقصر</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Font Cairo -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        rosegold: {
+                            50: '#fff7f8',
+                            100: '#fdeee0',
+                            200: '#fcd3be',
+                            300: '#f8ac92',
+                            400: '#f27e65',
+                            500: '#e05642',
+                            accent: '#b76e79',
+                            darkaccent: '#964b55',
+                            gold: '#d4af37',
+                            soft: '#fbf0eb'
+                        },
+                        cream: '#fffaf6'
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #fffaf6;
+            color: #2d2727;
+        }
+        .bg-rosegold-gradient {
+            background: linear-gradient(135deg, #b76e79 0%, #e2a8ac 50%, #d4af37 100%);
+        }
+        .bg-rosegold-soft {
+            background: linear-gradient(135deg, #fffaf6 0%, #fbf0eb 100%);
+        }
+        .border-rosegold-glow {
+            box-shadow: 0 0 15px rgba(183, 110, 121, 0.2);
+        }
+        .glass-header {
+            background: rgba(255, 250, 246, 0.92);
+            backdrop-filter: blur(10px);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fffaf6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e2a8ac;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b76e79;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-rosegold-accent selection:text-white">
+
+    <!-- Announcement Bar -->
+    <div class="bg-rosegold-accent text-white text-xs md:text-sm py-2 px-4 text-center font-medium shadow-inner flex items-center justify-center gap-2">
+        <i class="fa-solid fa-truck-fast animate-pulse">
+        </i>
+        <span>توصيل مبرد وسريع لجميع أحياء محافظة الأقصر (وسط البلد، التلفزيون، الكرنك، العوامية، والبر الغربي)</span>
+        <span class="bg-white/20 px-2 py-0.5 rounded-full text-[11px] hidden md:inline">طلبك يصل طازجاً 100%</span>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 glass-header border-b border-rosegold-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo & Brand Name -->
+                <div class="flex items-center gap-3">
+                    <a href="#" class="flex items-center gap-3 group">
+                        <div class="w-12 h-12 rounded-full bg-rosegold-soft border-2 border-rosegold-accent p-1 shadow-md group-hover:scale-105 transition-transform">
+                            <!-- Logo image fallback -->
+                            <img src="لوجو.png" onerror="this.onerror=null; this.src='https://placehold.co/100x100/b76e79/ffffff?text=ورود';" alt="شعار متجر ورود بالأقصر" class="w-full h-full object-cover rounded-full">
+                        </div>
+                        <div>
+                            <span class="text-2xl font-black text-slate-800 tracking-tight flex items-center gap-1.5">
+                                ورود <i class="fa-solid fa-crown text-rosegold-gold text-sm"></i>
+                            </span>
+                            <span class="block text-xs font-semibold text-rosegold-accent">حلويات وكيك الأقصر الفاخرة</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Navigation Links & Search -->
+                <nav class="hidden lg:flex items-center gap-8 font-semibold text-slate-700">
+                    <a href="#hero" class="hover:text-rosegold-accent transition-colors flex items-center gap-1.5 text-rosegold-accent">
+                        <i class="fa-solid fa-house text-sm"></i> الرئيسية
+                    </a>
+                    <a href="#menu-section" class="hover:text-rosegold-accent transition-colors flex items-center gap-1.5">
+                        <i class="fa-solid fa-utensils text-sm text-rosegold-accent"></i> قائمة المنيو
+                    </a>
+                    <a href="#custom-cake" class="hover:text-rosegold-accent transition-colors flex items-center gap-1.5">
+                        <i class="fa-solid fa-wand-magic-sparkles text-sm text-rosegold-gold"></i> صمم كيكتك
+                    </a>
+                    <a href="#luxor-delivery" class="hover:text-rosegold-accent transition-colors flex items-center gap-1.5">
+                        <i class="fa-solid fa-location-dot text-sm text-rosegold-accent"></i> مناطق الأقصر
+                    </a>
+                </nav>
+
+                <!-- Search Bar -->
+                <div class="hidden md:flex items-center flex-1 max-w-xs mx-6">
+                    <div class="relative w-full">
+                        <input type="text" id="searchInput" oninput="filterProducts()" placeholder="ابحث عن تورتة، جاتوه، كنافة..." class="w-full bg-white border border-rosegold-200 text-slate-800 text-sm rounded-full py-2.5 pr-10 pl-4 focus:outline-none focus:border-rosegold-accent focus:ring-2 focus:ring-rosegold-200 transition-all">
+                        <i class="fa-solid fa-magnifying-glass absolute right-3.5 top-3 text-slate-400"></i>
+                    </div>
+                </div>
+
+                <!-- Header Actions (Cart, Wishlist, Quick Menu) -->
+                <div class="flex items-center gap-3">
+                    <!-- Menu Quick Button -->
+                    <a href="#digital-menu" class="hidden sm:inline-flex items-center gap-2 bg-rosegold-soft border border-rosegold-accent/40 text-rosegold-darkaccent px-3.5 py-2 rounded-full text-xs font-bold hover:bg-rosegold-accent hover:text-white transition-all shadow-sm">
+                        <i class="fa-solid fa-book-open"></i>
+                        <span>المنيو المصور</span>
+                    </a>
+
+                    <!-- Wishlist Button -->
+                    <button onclick="toggleWishlistModal()" class="relative p-2.5 rounded-full bg-white border border-rosegold-200 text-slate-700 hover:text-rosegold-accent hover:border-rosegold-accent transition-all shadow-sm">
+                        <i class="fa-solid fa-heart text-lg"></i>
+                        <span id="wishlistCount" class="absolute -top-1 -right-1 bg-rosegold-accent text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-white">0</span>
+                    </button>
+
+                    <!-- Cart Drawer Trigger Button -->
+                    <button onclick="toggleCartDrawer()" class="relative bg-rosegold-accent hover:bg-rosegold-darkaccent text-white px-4 py-2.5 rounded-full font-bold text-sm shadow-md flex items-center gap-2 transition-all hover:shadow-lg">
+                        <i class="fa-solid fa-basket-shopping text-base"></i>
+                        <span class="hidden sm:inline">السلة</span>
+                        <span id="cartCount" class="bg-white text-rosegold-accent font-black text-xs px-2 py-0.5 rounded-full">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero" class="relative py-8 md:py-14 overflow-hidden bg-rosegold-soft border-b border-rosegold-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left Content Text -->
+                <div class="lg:col-span-6 text-center lg:text-right space-y-5">
+                    <div class="inline-flex items-center gap-2 bg-white border border-rosegold-300 text-rosegold-darkaccent px-4 py-1.5 rounded-full text-xs font-bold shadow-sm">
+                        <i class="fa-solid fa-gem text-rosegold-gold"></i>
+                        <span>أرقى حلويات وكيك في مدينة الأقصر الخالدة</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
+                        طعم الملكية والفخامة <br>
+                        <span class="text-transparent bg-clip-text bg-rosegold-gradient">في كل قطعة تذوقها</span>
+                    </h1>
+
+                    <p class="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0">
+                        نصنع لك أجمل تورت المناسبات، الجاتوه الفرنسي، والحلويات الشرقية الطازجة يومياً بأعلى معايير الجودة مع التوصيل السريع لأي مكان في الأقصر.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#menu-section" class="bg-rosegold-accent hover:bg-rosegold-darkaccent text-white font-bold px-7 py-3.5 rounded-2xl shadow-lg hover:shadow-xl transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-utensils"></i>
+                            <span>تصفح المنيو والأسعار</span>
+                        </a>
+                        <a href="#custom-cake" class="bg-white hover:bg-rosegold-50 text-slate-800 border-2 border-rosegold-accent font-bold px-6 py-3.5 rounded-2xl shadow-md transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-rosegold-accent"></i>
+                            <span>صمم كيكتك الخاصة</span>
+                        </a>
+                    </div>
+
+                    <!-- Trust Stats -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-rosegold-200/60 max-w-md mx-auto lg:mx-0">
+                        <div>
+                            <span class="block text-xl sm:text-2xl font-black text-slate-900">+100</span>
+                            <span class="text-xs text-slate-500 font-semibold">صنف بالمنيو</span>
+                        </div>
+                        <div>
+                            <span class="block text-xl sm:text-2xl font-black text-slate-900">100%</span>
+                            <span class="text-xs text-slate-500 font-semibold">طازج يومياً</span>
+                        </div>
+                        <div>
+                            <span class="block text-xl sm:text-2xl font-black text-slate-900">الأقصر</span>
+                            <span class="text-xs text-slate-500 font-semibold">توصيل شامل</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Image Banner -->
+                <div class="lg:col-span-6">
+                    <div class="relative rounded-3xl overflow-hidden border-4 border-white shadow-2xl group border-rosegold-glow">
+                        <img src="بانر.png" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1535141192574-5d4897c13136?auto=format&fit=crop&w=1000&q=80';" alt="بانر متجر ورود بالأقصر" class="w-full h-[320px] sm:h-[420px] object-cover group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-6">
+                            <div class="text-white">
+                                <span class="bg-rosegold-gold/90 text-slate-900 font-bold text-xs px-3 py-1 rounded-md mb-2 inline-block">عروض الأقصر الخاصة</span>
+                                <h3 class="text-lg font-bold">جاهزون لجميع حفلات الأعراس والخطوبة والتخرج</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="menu-section" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Title Header -->
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <span class="text-rosegold-accent font-bold text-sm tracking-widest uppercase flex items-center justify-center gap-2">
+                <i class="fa-solid fa-sparkles"></i> قائمتنا المتميزة
+            </span>
+            <h2 class="text-3xl sm:text-4xl font-black text-slate-900 mt-1">منيو ورود للحلويات والتورت</h2>
+            <p class="text-slate-600 text-sm mt-2">اختر أصنافك المفضلة من قائمة الحلويات الملكية المجهزة بأعلى المكونات الطازجة</p>
+        </div>
+
+        <!-- Filter Category Tabs -->
+        <div class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap mb-10">
+            <button onclick="setCategory('all')" id="cat-all" class="cat-btn active bg-rosegold-accent text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold shadow-md transition-all flex items-center gap-2">
+                <i class="fa-solid fa-border-all"></i> الكل
+            </button>
+            <button onclick="setCategory('cakes')" id="cat-cakes" class="cat-btn bg-white border border-rosegold-200 text-slate-700 hover:border-rosegold-accent px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold shadow-sm transition-all flex items-center gap-2">
+                <i class="fa-solid fa-cake-candles text-rosegold-accent"></i> تورت المناسبات
+            </button>
+            <button onclick="setCategory('gateaux')" id="cat-gateaux" class="cat-btn bg-white border border-rosegold-200 text-slate-700 hover:border-rosegold-accent px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold shadow-sm transition-all flex items-center gap-2">
+                <i class="fa-solid fa-cookie-bite text-rosegold-accent"></i> جاتوه وميني كيك
+            </button>
+            <button onclick="setCategory('oriental')" id="cat-oriental" class="cat-btn bg-white border border-rosegold-200 text-slate-700 hover:border-rosegold-accent px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold shadow-sm transition-all flex items-center gap-2">
+                <i class="fa-solid fa-bowl-food text-rosegold-accent"></i> حلويات شرقية
+            </button>
+            <button onclick="setCategory('packages')" id="cat-packages" class="cat-btn bg-white border border-rosegold-200 text-slate-700 hover:border-rosegold-accent px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold shadow-sm transition-all flex items-center gap-2">
+                <i class="fa-solid fa-box-open text-rosegold-accent"></i> باكجات وعروض
+            </button>
+        </div>
+
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <!-- Dynamic menu items will be injected here via JavaScript -->
+        </div>
+
+    </section>
+
+    <section id="digital-menu" class="py-12 bg-rosegold-soft border-y border-rosegold-200/80">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="bg-white rounded-3xl p-6 sm:p-10 shadow-xl border-2 border-rosegold-200 relative overflow-hidden">
+                <!-- Background decorative overlay -->
+                <div class="absolute -right-16 -top-16 w-40 h-40 bg-rosegold-100 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="absolute -left-16 -bottom-16 w-40 h-40 bg-rosegold-200 rounded-full blur-2xl pointer-events-none"></div>
+
+                <!-- Digital Menu Header -->
+                <div class="text-center border-b-2 border-dashed border-rosegold-200 pb-8 mb-8">
+                    <div class="w-16 h-16 mx-auto rounded-full bg-rosegold-50 border-2 border-rosegold-accent flex items-center justify-center mb-3">
+                        <i class="fa-solid fa-book-open text-2xl text-rosegold-accent"></i>
+                    </div>
+                    <h2 class="text-2xl sm:text-3xl font-black text-slate-900">منيو "ورود" للحلويات والأقصر</h2>
+                    <p class="text-rosegold-darkaccent text-xs sm:text-sm font-semibold mt-1">القائمة الرسمية للأسعار والطلبات الفورية</p>
+                    <div class="mt-3 inline-flex items-center gap-3 text-xs text-slate-500 font-bold">
+                        <span><i class="fa-solid fa-phone text-rosegold-accent ml-1"></i> طلبات واتساب: 01000000000</span>
+                        <span>•</span>
+                        <span><i class="fa-solid fa-location-dot text-rosegold-accent ml-1"></i> فرع الأقصر الرئيسي</span>
+                    </div>
+                </div>
+
+                <!-- Menu Categories Grid list -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Category 1: التورت الملكية -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-black text-slate-900 border-b-2 border-rosegold-accent pb-2 flex items-center justify-between">
+                            <span><i class="fa-solid fa-cake-candles text-rosegold-accent ml-2"></i> تورت المناسبات والاحتفالات</span>
+                            <span class="text-xs bg-rosegold-soft px-2 py-1 rounded text-rosegold-darkaccent">طازجة يومياً</span>
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex justify-between items-baseline border-b border-dashed border-slate-200 pb-1.5">
+                                <div>
+                                    <span class="font-bold text-slate-800">تورتة اللوتس الكبيرة</span>
+                                    <span class="block text-[11px] text-slate-500">كريمة اللوتس مع البسكويت المقرمش (مقاس 24)</span>
+                                </div>
+                                <span class="font-black text-rosegold-darkaccent whitespace-nowrap">420 ج.م</span>
+                            </li>
+                            <li class="flex justify-between items-baseline border-b border-dashed border-slate-200 pb-1.5">
+                                <div>
+                                    <span class="font-bold text-slate-800">تورتة الفريرو روشيه الفاخرة</span>
+                                    <span class="block text-[11px] text-slate-500">شوكولاتة بلجيكية مع البندق المحمص</span>
+                                </div>
+                                <span class="font-black text-rosegold-darkaccent whitespace-nowrap">480 ج.م</span>
+                            </li>
+                            <li class="flex justify-between items-baseline border-b border-dashed border-slate-200 pb-1.5">
+                                <div>
+                                    <span class="font-bold text-slate-800">تورتة ريد فيلفيت الملكية</span>
+                                    <span class="block text-[11px] text-slate-500">طبقات الكيك المخملي مع الكريمة الهشة</span>
+                                </div>
+                                <span class="font-black text-rosegold-darkaccent whitespace-nowrap">390 ج.م</span>
+                            </li>
+                            <li class="flex justify-between items-baseline border-b border-dashed border-slate-200 pb-1.5">
+                                <div>
+                                    <span class="font-bold text-slate-800">تورتة الفواكه الاستوائية والمانجو</span>
+                                    <span class="block text-[11px] text-slate-500">قطع المانجو والأناناس الطازجة</span>
+                                </div>
+                                <span class="font-black text-rosegold-darkaccent whitespace-nowrap">370 ج.م</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Category 2: الجاتوه والميني -->
+                    <div class="space-y-4">
+                        <h3 class="text-lg font-black text-slate-900 border-b-2 border-rosegold-accent pb-2 flex items-center justify-between">
+                            <span><i class="fa-solid fa-cookie-bite text-rosegold-accent ml-2"></i> الجاتوه والسواريه الممتاز</span>
+                            <span class="text-xs bg-rosegold-soft px-2 py-1 rounded text-rosegold-darkaccent">سواريه & ميني</span>
+                        </h3>
+                        <ul class="space-y-3 text-sm">
+                            <li class="flex justify-between items-baseline border-b border-dashed border-slate-200 pb-1.5
