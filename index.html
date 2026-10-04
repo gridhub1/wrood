@@ -111,6 +111,7 @@
             display: flex;
             list-style: none;
             gap: 25px;
+            align-items: center;
         }
 
         .nav-links a {
@@ -126,6 +127,39 @@
 
         .nav-links a:hover {
             color: var(--primary-pink);
+        }
+
+        /* Cart Icon Nav */
+        .cart-trigger {
+            position: relative;
+            cursor: pointer;
+            background: var(--soft-pink);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: var(--deep-pink) !important;
+            border: 1px solid var(--primary-pink);
+            transition: var(--transition);
+        }
+
+        .cart-trigger:hover {
+            background: var(--primary-pink);
+            color: #fff !important;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--deep-pink);
+            color: #fff;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
         }
 
         /* Hero Banner Section */
@@ -161,6 +195,7 @@
             font-weight: 900;
             margin-bottom: 15px;
             text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeInDown 1s ease;
         }
 
         .hero-subtitle {
@@ -171,6 +206,7 @@
             border-radius: 30px;
             backdrop-filter: blur(5px);
             display: inline-block;
+            animation: fadeInUp 1s ease;
         }
 
         /* Main Menu Section */
@@ -278,13 +314,86 @@
         .menu-card:hover .card-icon {
             background-color: var(--primary-pink);
             color: #fff;
+            transform: rotate(10deg) scale(1.1);
         }
 
         .card-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--dark-text);
             margin-bottom: 15px;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Quantity Control */
+        .qty-control {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            background: var(--soft-pink);
+            padding: 5px 10px;
+            border-radius: 25px;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .qty-btn {
+            background: var(--primary-pink);
+            color: #fff;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qty-btn:hover {
+            background: var(--deep-pink);
+        }
+
+        .qty-val {
+            font-weight: bold;
+            font-size: 1.2rem;
+            width: 25px;
+        }
+
+        .card-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .add-cart-btn {
+            background: var(--soft-pink);
+            color: var(--deep-pink);
+            border: 2px solid var(--primary-pink);
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .add-cart-btn:hover {
+            background: var(--primary-pink);
+            color: #fff;
         }
 
         .order-btn {
@@ -302,12 +411,12 @@
             justify-content: center;
             gap: 8px;
             text-decoration: none;
-            margin-top: 10px;
         }
 
         .order-btn:hover {
             opacity: 0.9;
             transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4);
         }
 
         /* Order Info Floating Section */
@@ -357,6 +466,101 @@
 
         .floating-whatsapp:hover {
             transform: scale(1.1);
+        }
+
+        /* Cart Drawer Slide-out */
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 380px;
+            max-width: 90%;
+            height: 100%;
+            background: #fff;
+            box-shadow: 5px 0 25px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-modal.open {
+            left: 0;
+        }
+
+        .cart-header {
+            background: linear-gradient(90deg, var(--deep-pink), var(--primary-pink));
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .close-cart {
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .cart-body {
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--soft-pink);
+        }
+
+        .cart-item-title {
+            font-weight: bold;
+            font-size: 1rem;
+            max-width: 180px;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 2px solid var(--soft-pink);
+        }
+
+        .send-cart-btn {
+            background: #25d366;
+            color: #fff;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: var(--transition);
+        }
+
+        .send-cart-btn:hover {
+            background: #1eb956;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1999;
+            display: none;
+        }
+
+        .cart-overlay.active {
+            display: block;
         }
 
         /* Footer */
@@ -421,6 +625,17 @@
             color: #aaa;
         }
 
+        /* Keyframes */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .navbar {
@@ -466,6 +681,12 @@
                 <li><a href="#sweet"><i class="fa-solid fa-cake-candles"></i> الحلويات</a></li>
                 <li><a href="#salty"><i class="fa-solid fa-utensils"></i> الحادق</a></li>
                 <li><a href="https://wa.me/201129868169" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل معنا</a></li>
+                <li>
+                    <a href="javascript:void(0)" class="cart-trigger" onclick="toggleCart()">
+                        <i class="fa-solid fa-cart-shopping"></i> السلة
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
@@ -498,13 +719,13 @@
 
         <!-- Filter Buttons -->
         <div class="category-tabs">
-            <button class="tab-btn active" onclick="filterMenu('all')">
+            <button class="tab-btn active" onclick="filterMenu('all', event)">
                 <i class="fa-solid fa-border-all"></i> الكل
             </button>
-            <button class="tab-btn" onclick="filterMenu('sweet')">
+            <button class="tab-btn" onclick="filterMenu('sweet', event)">
                 <i class="fa-solid fa-cookie-bite"></i> المنيو الحلو
             </button>
-            <button class="tab-btn" onclick="filterMenu('salty')">
+            <button class="tab-btn" onclick="filterMenu('salty', event)">
                 <i class="fa-solid fa-drumstick-bite"></i> المنيو الحادق
             </button>
         </div>
@@ -513,113 +734,260 @@
         <div class="menu-grid" id="menuGrid">
 
             <!-- SWEET ITEMS -->
-            <div class="menu-card" data-category="sweet">
+            <div class="menu-card" data-category="sweet" id="sweet">
                 <div class="card-icon"><i class="fa-solid fa-cake-candles"></i></div>
                 <h3 class="card-title">كيكة شوكولاتة غرقانة في صوص الشوكولاتة</h3>
-                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20كيكة%20شوكولاتة%20غرقانة%20في%20صوص%20الشوكولاتة" target="_blank" class="order-btn">
-                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-                </a>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                </div>
+                <div class="card-actions">
+                    <button class="add-cart-btn" onclick="addToCart(this)">
+                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                    </button>
+                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
+                    </a>
+                </div>
             </div>
 
             <div class="menu-card" data-category="sweet">
                 <div class="card-icon"><i class="fa-solid fa-cloud"></i></div>
                 <h3 class="card-title">قشطوطة تريليتشا عشاق المانجو</h3>
-                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20قشطوطة%20تريليتشا%20عشاق%20المانجو" target="_blank" class="order-btn">
-                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-                </a>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                </div>
+                <div class="card-actions">
+                    <button class="add-cart-btn" onclick="addToCart(this)">
+                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                    </button>
+                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
+                    </a>
+                </div>
             </div>
 
             <div class="menu-card" data-category="sweet">
                 <div class="card-icon"><i class="fa-solid fa-stroopwafel"></i></div>
                 <h3 class="card-title">جاتوه فانيليا</h3>
-                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20جاتوه%20فانيليا" target="_blank" class="order-btn">
-                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-                </a>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                </div>
+                <div class="card-actions">
+                    <button class="add-cart-btn" onclick="addToCart(this)">
+                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                    </button>
+                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
+                    </a>
+                </div>
             </div>
 
             <div class="menu-card" data-category="sweet">
                 <div class="card-icon"><i class="fa-solid fa-cookie"></i></div>
                 <h3 class="card-title">جاتوه شوكولاتة</h3>
-                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20جاتوه%20شوكولاتة" target="_blank" class="order-btn">
-                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-                </a>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                </div>
+                <div class="card-actions">
+                    <button class="add-cart-btn" onclick="addToCart(this)">
+                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                    </button>
+                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
+                    </a>
+                </div>
             </div>
 
             <div class="menu-card" data-category="sweet">
                 <div class="card-icon"><i class="fa-solid fa-cookie-bite"></i></div>
                 <h3 class="card-title">كوكيز</h3>
-                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20كوكيز" target="_blank" class="order-btn">
-                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-                </a>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                </div>
+                <div class="card-actions">
+                    <button class="add-cart-btn" onclick="addToCart(this)">
+                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                    </button>
+                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
+                    </a>
+                </div>
             </div>
 
             <!-- SALTY ITEMS -->
-            <div class="menu-card" data-category="salty">
+            <div class="menu-card" data-category="salty" id="salty">
                 <div class="card-icon"><i class="fa-solid fa-utensils"></i></div>
                 <h3 class="card-title">شاورما سوري</h3>
-                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20شاورما%20سوري" target="_blank" class="order-btn">
-                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-                </a>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                </div>
+                <div class="card-actions">
+                    <button class="add-cart-btn" onclick="addToCart(this)">
+                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                    </button>
+                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
+                    </a>
+                </div>
             </div>
 
             <div class="menu-card" data-category="salty">
                 <div class="card-icon"><i class="fa-solid fa-burger"></i></div>
                 <h3 class="card-title">شاورما مصري</h3>
-                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20شاورما%20مصري" target="_blank" class="order-btn">
-                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-                </a>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                </div>
+                <div class="card-actions">
+                    <button class="add-cart-btn" onclick="addToCart(this)">
+                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                    </button>
+                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
+                    </a>
+                </div>
             </div>
 
             <div class="menu-card" data-category="salty">
                 <div class="card-icon"><i class="fa-solid fa-fire-burner"></i></div>
                 <h3 class="card-title">فاهيتا فراخ</h3>
-                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20فاهيتا%20فراخ" target="_blank" class="order-btn">
-                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-                </a>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                </div>
+                <div class="card-actions">
+                    <button class="add-cart-btn" onclick="addToCart(this)">
+                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                    </button>
+                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
+                    </a>
+                </div>
             </div>
 
             <div class="menu-card" data-category="salty">
                 <div class="card-icon"><i class="fa-solid fa-bowl-rice"></i></div>
                 <h3 class="card-title">ديك بلدي محشي</h3>
-                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20ديك%20بلدي%20محشي" target="_blank" class="order-btn">
-                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-                </a>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                </div>
+                <div class="card-actions">
+                    <button class="add-cart-btn" onclick="addToCart(this)">
+                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                    </button>
+                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
+                    </a>
+                </div>
             </div>
 
             <div class="menu-card" data-category="salty">
                 <div class="card-icon"><i class="fa-solid fa-drumstick-bite"></i></div>
                 <h3 class="card-title">وجبة ربع فرخة (ربع فرخة + أرز + سلطة)</h3>
-                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20وجبة%20ربع%20فرخة" target="_blank" class="order-btn">
-                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-                </a>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                </div>
+                <div class="card-actions">
+                    <button class="add-cart-btn" onclick="addToCart(this)">
+                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                    </button>
+                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
+                    </a>
+                </div>
             </div>
 
             <div class="menu-card" data-category="salty">
                 <div class="card-icon"><i class="fa-solid fa-hotdog"></i></div>
                 <h3 class="card-title">وجبة استريبس</h3>
-                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20وجبة%20استريبس" target="_blank" class="order-btn">
-                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-                </a>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                </div>
+                <div class="card-actions">
+                    <button class="add-cart-btn" onclick="addToCart(this)">
+                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                    </button>
+                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
+                    </a>
+                </div>
             </div>
 
             <div class="menu-card" data-category="salty">
                 <div class="card-icon"><i class="fa-solid fa-dove"></i></div>
                 <h3 class="card-title">حمام محشي</h3>
-                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20حمام%20محشي" target="_blank" class="order-btn">
-                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-                </a>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                </div>
+                <div class="card-actions">
+                    <button class="add-cart-btn" onclick="addToCart(this)">
+                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                    </button>
+                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
+                    </a>
+                </div>
             </div>
 
             <div class="menu-card" data-category="salty">
                 <div class="card-icon"><i class="fa-solid fa-bowl-food"></i></div>
                 <h3 class="card-title">طاجن بامية باللحمة</h3>
-                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20طاجن%20بامية%20باللحمة" target="_blank" class="order-btn">
-                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
-                </a>
+                <div class="qty-control">
+                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
+                    <span class="qty-val">1</span>
+                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
+                </div>
+                <div class="card-actions">
+                    <button class="add-cart-btn" onclick="addToCart(this)">
+                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                    </button>
+                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
+                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
+                    </a>
+                </div>
             </div>
 
         </div>
     </section>
+
+    <!-- Slide Cart Sidebar -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3><i class="fa-solid fa-basket-shopping"></i> سلة الطلبات</h3>
+            <span class="close-cart" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></span>
+        </div>
+        <div class="cart-body" id="cartBody">
+            <p style="text-align: center; color: #888;">السلة فارغة حالياً</p>
+        </div>
+        <div class="cart-footer">
+            <button class="send-cart-btn" onclick="sendCartToWhatsApp()">
+                <i class="fa-brands fa-whatsapp"></i> إرسال الطلب بالكامل
+            </button>
+        </div>
+    </div>
 
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20الاستفسار%20عن%20المنيو" class="floating-whatsapp" target="_blank" title="تواصل عبر الواتساب">
@@ -641,14 +1009,16 @@
         </div>
     </footer>
 
-    <!-- Filter Script -->
+    <!-- Interactive Cart Logic & Menu Filter -->
     <script>
-        function filterMenu(category) {
+        let cart = [];
+
+        function filterMenu(category, e) {
             const cards = document.querySelectorAll('.menu-card');
             const buttons = document.querySelectorAll('.tab-btn');
 
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.currentTarget.classList.add('active');
+            if(e) e.currentTarget.classList.add('active');
 
             cards.forEach(card => {
                 if (category === 'all' || card.getAttribute('data-category') === category) {
@@ -657,6 +1027,96 @@
                     card.style.display = 'none';
                 }
             });
+        }
+
+        function changeQty(btn, delta) {
+            const qtySpan = btn.parentElement.querySelector('.qty-val');
+            let currentVal = parseInt(qtySpan.textContent);
+            currentVal += delta;
+            if (currentVal < 1) currentVal = 1;
+            qtySpan.textContent = currentVal;
+        }
+
+        function addToCart(btn) {
+            const card = btn.closest('.menu-card');
+            const title = card.querySelector('.card-title').textContent.trim();
+            const qty = parseInt(card.querySelector('.qty-val').textContent);
+
+            const existingItem = cart.find(item => item.title === title);
+            if (existingItem) {
+                existingItem.qty += qty;
+            } else {
+                cart.push({ title, qty });
+            }
+
+            updateCartUI();
+            toggleCart(true);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cartCount');
+            const cartBody = document.getElementById('cartBody');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            cartCount.textContent = totalItems;
+
+            if (cart.length === 0) {
+                cartBody.innerHTML = '<p style="text-align: center; color: #888;">السلة فارغة حالياً</p>';
+                return;
+            }
+
+            cartBody.innerHTML = '';
+            cart.forEach((item, index) => {
+                cartBody.innerHTML += `
+                    <div class="cart-item">
+                        <div>
+                            <div class="cart-item-title">${item.title}</div>
+                            <small style="color: var(--primary-pink); font-weight:bold;">الكمية: ${item.qty}</small>
+                        </div>
+                        <i class="fa-solid fa-trash" style="color:#e74c3c; cursor:pointer;" onclick="removeFromCart(${index})"></i>
+                    </div>
+                `;
+            });
+        }
+
+        function toggleCart(forceOpen = false) {
+            const modal = document.getElementById('cartModal');
+            const overlay = document.getElementById('cartOverlay');
+            if (forceOpen) {
+                modal.classList.add('open');
+                overlay.classList.add('active');
+            } else {
+                modal.classList.toggle('open');
+                overlay.classList.toggle('active');
+            }
+        }
+
+        function directOrder(btn) {
+            const card = btn.closest('.menu-card');
+            const title = card.querySelector('.card-title').textContent.trim();
+            const qty = card.querySelector('.qty-val').textContent;
+            
+            const msg = `أهلاً متجر ورود، أريد طلب:\n- ${title} (الكمية: ${qty})`;
+            window.open(`https://wa.me/201129868169?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function sendCartToWhatsApp() {
+            if (cart.length === 0) {
+                alert('السلة فارغة!');
+                return;
+            }
+
+            let msg = "أهلاً متجر ورود، أريد طلب القائمة التالية:\n";
+            cart.forEach((item, i) => {
+                msg += `${i + 1}. ${item.title} (الكمية: ${item.qty})\n`;
+            });
+
+            window.open(`https://wa.me/201129868169?text=${encodeURIComponent(msg)}`, '_blank');
         }
     </script>
 </body>
