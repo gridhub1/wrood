@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>متجر ورود | أشهى الحلويات والمأكولات</title>
 
-    <!-- SEO Meta Tags for Search Engines -->
-    <meta name="description" content="متجر ورود للحلويات والمأكولات الشرقية والغربية. أفضل كيك، قشطوطة، تريليتشا، شاورما، وطواجن بأعلى جودة.">
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="متجر ورود للحلويات والمأكولات الشرقية والغربية. أفضل كيك، قشطوطة، شاورما، وطواجن بأعلى جودة.">
     <meta property="og:title" content="متجر ورود | للحلويات والمأكولات">
     <meta property="og:description" content="أشهى الحلويات والمأكولات من متجر ورود. اطلب الآن عبر الواتساب!">
     <meta property="og:image" content="https://i.ibb.co/t9G1rPm/Elegant-bakery-and-patisserie-logo-design-for-a-ca-1791023084823-removebg-preview.png">
     <meta property="og:type" content="website">
     <link rel="icon" href="https://i.ibb.co/t9G1rPm/Elegant-bakery-and-patisserie-logo-design-for-a-ca-1791023084823-removebg-preview.png" type="image/x-icon">
 
-    <!-- Schema.org for Google Search Engine Logo Recognition -->
+    <!-- Schema.org JSON-LD for Search Engines -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -21,6 +21,7 @@
       "name": "متجر ورود",
       "image": "https://i.ibb.co/t9G1rPm/Elegant-bakery-and-patisserie-logo-design-for-a-ca-1791023084823-removebg-preview.png",
       "logo": "https://i.ibb.co/t9G1rPm/Elegant-bakery-and-patisserie-logo-design-for-a-ca-1791023084823-removebg-preview.png",
+      "description": "متجر ورود للحلويات والمأكولات الشرقية والغربية",
       "telephone": "+201129868169"
     }
     </script>
@@ -28,7 +29,7 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Custom Local Font Setup -->
+    <!-- Google Fonts Backup / Custom Local Font Setup -->
     <style>
         @font-face {
             font-family: 'ZainCustom';
@@ -63,15 +64,15 @@
             overflow-x: hidden;
         }
 
-        /* Preloader Loading Screen */
+        /* 5 Seconds Preloader Screen */
         #preloader {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: #ffffff;
-            z-index: 9999;
+            background-color: #ffffff;
+            z-index: 99999;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -80,11 +81,10 @@
         }
 
         .loader-logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
+            width: 180px;
+            height: auto;
             margin-bottom: 20px;
-            animation: pulse 1.5s infinite alternate;
+            animation: pulse 1.5s infinite ease-in-out;
         }
 
         .spinner {
@@ -96,14 +96,48 @@
             animation: spin 1s linear infinite;
         }
 
+        .loader-text {
+            margin-top: 15px;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--deep-pink);
+        }
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
 
         @keyframes pulse {
-            0% { transform: scale(0.95); }
-            100% { transform: scale(1.05); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        /* Toast Notification */
+        #toast {
+            visibility: hidden;
+            min-width: 280px;
+            background-color: var(--deep-pink);
+            color: #fff;
+            text-align: center;
+            border-radius: 30px;
+            padding: 14px 24px;
+            position: fixed;
+            z-index: 3000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 1.1rem;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s, visibility 0.3s, bottom 0.3s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+            bottom: 40px;
         }
 
         /* Header & Nav */
@@ -122,7 +156,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 14px 20px;
+            padding: 10px 20px;
         }
 
         .logo-container {
@@ -132,17 +166,19 @@
             text-decoration: none;
         }
 
+        /* Enlarged Logo Styles */
         .logo-img {
-            width: 55px;
-            height: 55px;
+            width: 85px;
+            height: 85px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--primary-pink);
             box-shadow: 0 4px 10px rgba(255, 75, 139, 0.2);
+            transition: var(--transition);
         }
 
         .logo-text {
-            font-size: 1.9rem;
+            font-size: 2.2rem;
             font-weight: 800;
             color: var(--deep-pink);
             letter-spacing: 0.5px;
@@ -642,8 +678,8 @@
         }
 
         .footer-logo img {
-            width: 50px;
-            height: 50px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             object-fit: cover;
         }
@@ -698,6 +734,11 @@
                 gap: 15px;
             }
 
+            .logo-img {
+                width: 70px;
+                height: 70px;
+            }
+
             .hero-title {
                 font-size: 2.3rem;
             }
@@ -724,11 +765,15 @@
 </head>
 <body>
 
-    <!-- Preloader Loading Screen -->
+    <!-- 5 Seconds Loading Screen -->
     <div id="preloader">
         <img src="https://i.ibb.co/t9G1rPm/Elegant-bakery-and-patisserie-logo-design-for-a-ca-1791023084823-removebg-preview.png" alt="متجر ورود" class="loader-logo">
         <div class="spinner"></div>
+        <div class="loader-text">جاري تحضير أشهى المأكولات والحلويات...</div>
     </div>
+
+    <!-- Notification Toast -->
+    <div id="toast"><i class="fa-solid fa-circle-check"></i> تم إضافة السلعة إلى سلة الطلبات بنجاح</div>
 
     <!-- Header / Navbar -->
     <header>
@@ -809,10 +854,10 @@
                 </div>
             </div>
 
-            <!-- Separated Items -->
+            <!-- Separated Items: Qashtouta & Treleche -->
             <div class="menu-card" data-category="sweet">
                 <div class="card-icon"><i class="fa-solid fa-cloud"></i></div>
-                <h3 class="card-title">قشطوطة لعشاق المانجو</h3>
+                <h3 class="card-title">قشطوطة مانجو</h3>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -1021,9 +1066,9 @@
                 <p style="text-align: center; color: #888;">السلة فارغة حالياً</p>
             </div>
             
-            <!-- Customer Form without address -->
+            <!-- Customer Form without Address Field -->
             <div class="customer-form" id="customerForm" style="display: none;">
-                <h4><i class="fa-solid fa-user-pen"></i> بيانات الطلب والتواصل</h4>
+                <h4><i class="fa-solid fa-user-pen"></i> بيانات الطلب والتوصيل</h4>
                 <div class="form-group">
                     <label for="custName">الاسم الكامل *</label>
                     <input type="text" id="custName" placeholder="أدخل اسمك الكريم">
@@ -1062,14 +1107,27 @@
 
     <!-- Interactive Cart Logic & Menu Filter -->
     <script>
-        // Preloader Logic
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            preloader.style.opacity = '0';
-            preloader.style.visibility = 'hidden';
+        let cart = [];
+
+        // Preloader Logic - 5 Seconds Timer
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    preloader.style.visibility = 'hidden';
+                }
+            }, 5000);
         });
 
-        let cart = [];
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${message}`;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
 
         function filterMenu(category, e) {
             const cards = document.querySelectorAll('.menu-card');
@@ -1108,6 +1166,7 @@
             }
 
             updateCartUI();
+            showToast('تم إضافة السلعة إلى سلة الطلبات بنجاح');
         }
 
         function removeFromCart(index) {
@@ -1167,7 +1226,7 @@
             const notes = document.getElementById('custNotes').value.trim();
 
             if (!name || !phone) {
-                alert('يرجى ملء كافة البيانات المطلوبة (الاسم ورقم الهاتف) لاستكمال الطلب.');
+                alert('يرجى ملء كافة البيانات المطلوبة (الاسم ورقم الهاتف) لإتمام الطلب.');
                 return;
             }
 
