@@ -9,9 +9,9 @@
     <meta name="description" content="متجر ورود للحلويات والمأكولات الشرقية والغربية. أفضل كيك، قشطوطة، شاورما، وطواجن بأعلى جودة.">
     <meta property="og:title" content="متجر ورود | للحلويات والمأكولات">
     <meta property="og:description" content="أشهى الحلويات والمأكولات من متجر ورود. اطلب الآن عبر الواتساب!">
-    <meta property="og:image" content="https://ibb.co/MmvJ052">
+    <meta property="og:image" content="https://ibb.co/gFrtCsww">
     <meta property="og:type" content="website">
-    <link rel="icon" href="https://ibb.co/MmvJ052" type="image/x-icon">
+    <link rel="icon" href="https://ibb.co/gFrtCsww" type="image/x-icon">
 
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -33,8 +33,8 @@
             --accent-gold: #ffb703;
             --dark-text: #2b2b2b;
             --light-bg: #fff8fa;
-            --card-shadow: 0 10px 25px rgba(255, 75, 139, 0.15);
-            --transition: all 0.3s ease;
+            --card-shadow: 0 10px 25px rgba(255, 75, 139, 0.12);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         * {
@@ -51,28 +51,14 @@
             overflow-x: hidden;
         }
 
-        /* Top Announcement Bar */
-        .announcement-bar {
-            background: linear-gradient(90deg, var(--deep-pink), var(--primary-pink));
-            color: #fff;
-            text-align: center;
-            padding: 10px 15px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
         /* Header & Nav */
         header {
             background-color: #ffffff;
-            box-shadow: 0 4px 15px rgba(255, 75, 139, 0.1);
+            box-shadow: 0 4px 20px rgba(255, 75, 139, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         .navbar {
@@ -81,7 +67,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 20px;
+            padding: 14px 20px;
         }
 
         .logo-container {
@@ -92,19 +78,19 @@
         }
 
         .logo-img {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--primary-pink);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 2px solid var(--primary-pink);
+            box-shadow: 0 4px 10px rgba(255, 75, 139, 0.2);
         }
 
         .logo-text {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             font-weight: 800;
             color: var(--deep-pink);
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .nav-links {
@@ -133,17 +119,19 @@
         .cart-trigger {
             position: relative;
             cursor: pointer;
-            background: var(--soft-pink);
-            padding: 8px 16px;
-            border-radius: 20px;
+            background: linear-gradient(135deg, var(--soft-pink), #ffffff);
+            padding: 8px 18px;
+            border-radius: 25px;
             color: var(--deep-pink) !important;
-            border: 1px solid var(--primary-pink);
+            border: 1.5px solid var(--primary-pink);
             transition: var(--transition);
+            box-shadow: 0 2px 8px rgba(255, 75, 139, 0.15);
         }
 
         .cart-trigger:hover {
             background: var(--primary-pink);
             color: #fff !important;
+            transform: translateY(-2px);
         }
 
         .cart-count {
@@ -158,14 +146,15 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
 
         /* Hero Banner Section */
         .hero {
             position: relative;
-            height: 450px;
+            height: 480px;
             background: url('https://ibb.co/gFrtCsww') center/cover no-repeat;
             display: flex;
             align-items: center;
@@ -180,7 +169,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(216, 27, 96, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
+            background: linear-gradient(180deg, rgba(216, 27, 96, 0.45) 0%, rgba(20, 20, 20, 0.7) 100%);
         }
 
         .hero-content {
@@ -191,22 +180,23 @@
         }
 
         .hero-title {
-            font-size: 3.2rem;
+            font-size: 3.5rem;
             font-weight: 900;
             margin-bottom: 15px;
-            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.6);
             animation: fadeInDown 1s ease;
         }
 
         .hero-subtitle {
             font-size: 1.5rem;
             margin-bottom: 25px;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.25);
+            padding: 10px 25px;
             border-radius: 30px;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(8px);
             display: inline-block;
             animation: fadeInUp 1s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
 
         /* Main Menu Section */
@@ -222,11 +212,12 @@
         }
 
         .section-title {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             color: var(--deep-pink);
             position: relative;
             display: inline-block;
             padding-bottom: 10px;
+            font-weight: 800;
         }
 
         .section-title::after {
@@ -253,8 +244,8 @@
             background-color: #fff;
             border: 2px solid var(--primary-pink);
             color: var(--primary-pink);
-            padding: 12px 30px;
-            font-size: 1.3rem;
+            padding: 10px 28px;
+            font-size: 1.25rem;
             font-weight: bold;
             border-radius: 30px;
             cursor: pointer;
@@ -267,7 +258,7 @@
         .tab-btn.active, .tab-btn:hover {
             background-color: var(--primary-pink);
             color: #fff;
-            box-shadow: 0 5px 15px rgba(255, 75, 139, 0.4);
+            box-shadow: 0 6px 18px rgba(255, 75, 139, 0.35);
         }
 
         /* Menu Grid */
@@ -283,7 +274,7 @@
             padding: 25px;
             text-align: center;
             box-shadow: var(--card-shadow);
-            border: 1px solid var(--soft-pink);
+            border: 1px solid rgba(255, 240, 245, 0.8);
             transition: var(--transition);
             position: relative;
             overflow: hidden;
@@ -294,19 +285,19 @@
 
         .menu-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(255, 75, 139, 0.25);
+            box-shadow: 0 15px 30px rgba(255, 75, 139, 0.22);
         }
 
         .card-icon {
-            width: 70px;
-            height: 70px;
+            width: 75px;
+            height: 75px;
             background-color: var(--soft-pink);
             color: var(--deep-pink);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin: 0 auto 15px;
             transition: var(--transition);
         }
@@ -314,11 +305,11 @@
         .menu-card:hover .card-icon {
             background-color: var(--primary-pink);
             color: #fff;
-            transform: rotate(10deg) scale(1.1);
+            transform: rotate(10deg) scale(1.08);
         }
 
         .card-title {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--dark-text);
             margin-bottom: 15px;
@@ -333,10 +324,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
+            gap: 12px;
+            margin-bottom: 18px;
             background: var(--soft-pink);
-            padding: 5px 10px;
+            padding: 6px 14px;
             border-radius: 25px;
             width: fit-content;
             margin-left: auto;
@@ -376,31 +367,10 @@
         }
 
         .add-cart-btn {
-            background: var(--soft-pink);
-            color: var(--deep-pink);
-            border: 2px solid var(--primary-pink);
-            padding: 10px 20px;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .add-cart-btn:hover {
-            background: var(--primary-pink);
-            color: #fff;
-        }
-
-        .order-btn {
             background: linear-gradient(45deg, var(--primary-pink), var(--deep-pink));
             color: #fff;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 25px;
             font-size: 1.1rem;
             font-weight: bold;
@@ -410,13 +380,13 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(216, 27, 96, 0.25);
         }
 
-        .order-btn:hover {
-            opacity: 0.9;
-            transform: scale(1.03);
-            box-shadow: 0 5px 15px rgba(216, 27, 96, 0.4);
+        .add-cart-btn:hover {
+            opacity: 0.95;
+            transform: scale(1.02);
+            box-shadow: 0 6px 18px rgba(216, 27, 96, 0.35);
         }
 
         /* Order Info Floating Section */
@@ -444,40 +414,16 @@
             color: var(--dark-text);
         }
 
-        /* Floating WhatsApp Button */
-        .floating-whatsapp {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            background-color: #25d366;
-            color: #fff;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
-            text-decoration: none;
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .floating-whatsapp:hover {
-            transform: scale(1.1);
-        }
-
         /* Cart Drawer Slide-out */
         .cart-modal {
             position: fixed;
             top: 0;
             left: -100%;
-            width: 380px;
+            width: 420px;
             max-width: 90%;
             height: 100%;
             background: #fff;
-            box-shadow: 5px 0 25px rgba(0,0,0,0.2);
+            box-shadow: 5px 0 30px rgba(0,0,0,0.25);
             z-index: 2000;
             transition: all 0.4s ease;
             display: flex;
@@ -500,6 +446,11 @@
         .close-cart {
             font-size: 1.5rem;
             cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-cart:hover {
+            transform: rotate(90deg);
         }
 
         .cart-body {
@@ -518,23 +469,67 @@
 
         .cart-item-title {
             font-weight: bold;
+            font-size: 1.05rem;
+            max-width: 220px;
+        }
+
+        /* Customer Form Styles */
+        .customer-form {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px dashed var(--soft-pink);
+        }
+
+        .customer-form h4 {
+            color: var(--deep-pink);
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin-bottom: 4px;
+            color: var(--dark-text);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid #e0e0e0;
+            border-radius: 10px;
             font-size: 1rem;
-            max-width: 180px;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 0 3px rgba(255, 75, 139, 0.15);
         }
 
         .cart-footer {
             padding: 20px;
             border-top: 2px solid var(--soft-pink);
+            background: #fff;
         }
 
         .send-cart-btn {
             background: #25d366;
             color: #fff;
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             border: none;
             border-radius: 30px;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: bold;
             cursor: pointer;
             display: flex;
@@ -542,10 +537,13 @@
             justify-content: center;
             gap: 10px;
             transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
         }
 
         .send-cart-btn:hover {
             background: #1eb956;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
         }
 
         .cart-overlay {
@@ -557,6 +555,7 @@
             background: rgba(0,0,0,0.5);
             z-index: 1999;
             display: none;
+            backdrop-filter: blur(3px);
         }
 
         .cart-overlay.active {
@@ -584,13 +583,14 @@
         .footer-logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .footer-logo img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
+            object-fit: cover;
         }
 
         .footer-socials {
@@ -644,7 +644,7 @@
             }
 
             .hero-title {
-                font-size: 2.2rem;
+                font-size: 2.3rem;
             }
 
             .hero-subtitle {
@@ -659,22 +659,21 @@
             .category-tabs {
                 flex-wrap: wrap;
             }
+            
+            .cart-modal {
+                width: 100%;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- Top Notice Bar -->
-    <div class="announcement-bar">
-        <i class="fa-solid fa-clock"></i>
-        <span>برجاء الطلب قبل الميعاد ب 24 ساعة</span>
-    </div>
-
     <!-- Header / Navbar -->
     <header>
         <nav class="navbar">
             <a href="#" class="logo-container">
-                <img src="https://ibb.co/MmvJ052" alt="لوجو متجر ورود للحلويات والمأكولات" class="logo-img">
+                <img src="https://ibb.co/gFrtCsww" alt="لوجو متجر ورود للحلويات والمأكولات" class="logo-img">
                 <span class="logo-text">ورود</span>
             </a>
             <ul class="nav-links">
@@ -746,9 +745,6 @@
                     <button class="add-cart-btn" onclick="addToCart(this)">
                         <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
                     </button>
-                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
-                    </a>
                 </div>
             </div>
 
@@ -764,9 +760,6 @@
                     <button class="add-cart-btn" onclick="addToCart(this)">
                         <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
                     </button>
-                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
-                    </a>
                 </div>
             </div>
 
@@ -782,9 +775,6 @@
                     <button class="add-cart-btn" onclick="addToCart(this)">
                         <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
                     </button>
-                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
-                    </a>
                 </div>
             </div>
 
@@ -800,9 +790,6 @@
                     <button class="add-cart-btn" onclick="addToCart(this)">
                         <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
                     </button>
-                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
-                    </a>
                 </div>
             </div>
 
@@ -818,9 +805,6 @@
                     <button class="add-cart-btn" onclick="addToCart(this)">
                         <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
                     </button>
-                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
-                    </a>
                 </div>
             </div>
 
@@ -837,9 +821,6 @@
                     <button class="add-cart-btn" onclick="addToCart(this)">
                         <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
                     </button>
-                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
-                    </a>
                 </div>
             </div>
 
@@ -855,9 +836,6 @@
                     <button class="add-cart-btn" onclick="addToCart(this)">
                         <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
                     </button>
-                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
-                    </a>
                 </div>
             </div>
 
@@ -873,9 +851,6 @@
                     <button class="add-cart-btn" onclick="addToCart(this)">
                         <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
                     </button>
-                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
-                    </a>
                 </div>
             </div>
 
@@ -891,9 +866,6 @@
                     <button class="add-cart-btn" onclick="addToCart(this)">
                         <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
                     </button>
-                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
-                    </a>
                 </div>
             </div>
 
@@ -909,9 +881,6 @@
                     <button class="add-cart-btn" onclick="addToCart(this)">
                         <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
                     </button>
-                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
-                    </a>
                 </div>
             </div>
 
@@ -927,9 +896,6 @@
                     <button class="add-cart-btn" onclick="addToCart(this)">
                         <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
                     </button>
-                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
-                    </a>
                 </div>
             </div>
 
@@ -945,9 +911,6 @@
                     <button class="add-cart-btn" onclick="addToCart(this)">
                         <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
                     </button>
-                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
-                    </a>
                 </div>
             </div>
 
@@ -963,9 +926,6 @@
                     <button class="add-cart-btn" onclick="addToCart(this)">
                         <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
                     </button>
-                    <a href="javascript:void(0)" onclick="directOrder(this)" class="order-btn">
-                        <i class="fa-brands fa-whatsapp"></i> اطلب الآن مباشرة
-                    </a>
                 </div>
             </div>
 
@@ -980,25 +940,43 @@
             <span class="close-cart" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></span>
         </div>
         <div class="cart-body" id="cartBody">
-            <p style="text-align: center; color: #888;">السلة فارغة حالياً</p>
+            <div id="cartItemsContainer">
+                <p style="text-align: center; color: #888;">السلة فارغة حالياً</p>
+            </div>
+            
+            <!-- Customer Form -->
+            <div class="customer-form" id="customerForm" style="display: none;">
+                <h4><i class="fa-solid fa-user-pen"></i> بيانات الطلب والتوصيل</h4>
+                <div class="form-group">
+                    <label for="custName">الاسم الكامل *</label>
+                    <input type="text" id="custName" placeholder="أدخل اسمك الكريم">
+                </div>
+                <div class="form-group">
+                    <label for="custPhone">رقم الهاتف *</label>
+                    <input type="tel" id="custPhone" placeholder="رقم الموبايل للنتواصل">
+                </div>
+                <div class="form-group">
+                    <label for="custAddress">العنوان التفصيلي *</label>
+                    <input type="text" id="custAddress" placeholder="المنطقة، الشارع، رقم العمارة">
+                </div>
+                <div class="form-group">
+                    <label for="custNotes">ملاحظات إضافية (اختياري)</label>
+                    <textarea id="custNotes" rows="2" placeholder="أي تفاصيل خاصة بالطلب"></textarea>
+                </div>
+            </div>
         </div>
         <div class="cart-footer">
             <button class="send-cart-btn" onclick="sendCartToWhatsApp()">
-                <i class="fa-brands fa-whatsapp"></i> إرسال الطلب بالكامل
+                <i class="fa-brands fa-whatsapp"></i> تأكيد وإرسال الطلب
             </button>
         </div>
     </div>
-
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20الاستفسار%20عن%20المنيو" class="floating-whatsapp" target="_blank" title="تواصل عبر الواتساب">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-logo">
-                <img src="https://ibb.co/MmvJ052" alt="لوجو متجر ورود">
+                <img src="https://ibb.co/gFrtCsww" alt="لوجو متجر ورود">
                 <span style="font-size: 1.5rem; font-weight: bold; color: var(--primary-pink);">متجر ورود</span>
             </div>
             <p><i class="fa-solid fa-phone"></i> للطلب والتواصل: +20 11 29868169</p>
@@ -1060,19 +1038,22 @@
 
         function updateCartUI() {
             const cartCount = document.getElementById('cartCount');
-            const cartBody = document.getElementById('cartBody');
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const customerForm = document.getElementById('customerForm');
             
             const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
             cartCount.textContent = totalItems;
 
             if (cart.length === 0) {
-                cartBody.innerHTML = '<p style="text-align: center; color: #888;">السلة فارغة حالياً</p>';
+                cartItemsContainer.innerHTML = '<p style="text-align: center; color: #888;">السلة فارغة حالياً</p>';
+                customerForm.style.display = 'none';
                 return;
             }
 
-            cartBody.innerHTML = '';
+            customerForm.style.display = 'block';
+            cartItemsContainer.innerHTML = '';
             cart.forEach((item, index) => {
-                cartBody.innerHTML += `
+                cartItemsContainer.innerHTML += `
                     <div class="cart-item">
                         <div>
                             <div class="cart-item-title">${item.title}</div>
@@ -1096,22 +1077,33 @@
             }
         }
 
-        function directOrder(btn) {
-            const card = btn.closest('.menu-card');
-            const title = card.querySelector('.card-title').textContent.trim();
-            const qty = card.querySelector('.qty-val').textContent;
-            
-            const msg = `أهلاً متجر ورود، أريد طلب:\n- ${title} (الكمية: ${qty})`;
-            window.open(`https://wa.me/201129868169?text=${encodeURIComponent(msg)}`, '_blank');
-        }
-
         function sendCartToWhatsApp() {
             if (cart.length === 0) {
-                alert('السلة فارغة!');
+                alert('السلة فارغة! يرجى إضافة منتجات أولاً.');
                 return;
             }
 
-            let msg = "أهلاً متجر ورود، أريد طلب القائمة التالية:\n";
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+            const notes = document.getElementById('custNotes').value.trim();
+
+            if (!name || !phone || !address) {
+                alert('يرجى ملء جميع البيانات المطلوبة (الاسم، الهاتف، والعنوان) لاستكمال الطلب.');
+                return;
+            }
+
+            let msg = "🌸 *طلب جديد من متجر ورود* 🌸\n\n";
+            
+            msg += "👤 *بيانات العميل:*\n";
+            msg += `• *الاسم:* ${name}\n`;
+            msg += `• *رقم الهاتف:* ${phone}\n`;
+            msg += `• *العنوان:* ${address}\n`;
+            if (notes) {
+                msg += `• *ملاحظات:* ${notes}\n`;
+            }
+
+            msg += "\n🛒 *تفاصيل الطلب:*\n";
             cart.forEach((item, i) => {
                 msg += `${i + 1}. ${item.title} (الكمية: ${item.qty})\n`;
             });
