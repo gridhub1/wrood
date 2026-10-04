@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر ورود | أشهى الحلويات والمأكولات</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="متجر ورود للحلويات والمأكولات الشرقية والغربية. أفضل كيك، قشطوطة، شاورما، وطواجن بأعلى جودة.">
+    <meta property="og:title" content="متجر ورود | للحلويات والمأكولات">
+    <meta property="og:description" content="أشهى الحلويات والمأكولات من متجر ورود. اطلب الآن عبر الواتساب!">
+    <meta property="og:image" content="https://ibb.co/MmvJ052">
+    <meta property="og:type" content="website">
+    <link rel="icon" href="https://ibb.co/MmvJ052" type="image/x-icon">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts Backup / Custom Local Font Setup -->
+    <style>
+        @font-face {
+            font-family: 'ZainCustom';
+            src: url('alfont_com_zainpcv2-VFmobmadd.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        :root {
+            --primary-pink: #ff4b8b;
+            --soft-pink: #fff0f5;
+            --deep-pink: #d81b60;
+            --accent-gold: #ffb703;
+            --dark-text: #2b2b2b;
+            --light-bg: #fff8fa;
+            --card-shadow: 0 10px 25px rgba(255, 75, 139, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'ZainCustom', 'Cairo', sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Top Announcement Bar */
+        .announcement-bar {
+            background: linear-gradient(90deg, var(--deep-pink), var(--primary-pink));
+            color: #fff;
+            text-align: center;
+            padding: 10px 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(255, 75, 139, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-pink);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--deep-pink);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-pink);
+        }
+
+        /* Hero Banner Section */
+        .hero {
+            position: relative;
+            height: 450px;
+            background: url('https://ibb.co/gFrtCsww') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(216, 27, 96, 0.4) 0%, rgba(0, 0, 0, 0.6) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: 2px 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(5px);
+            display: inline-block;
+        }
+
+        /* Main Menu Section */
+        .menu-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--deep-pink);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-gold);
+            border-radius: 2px;
+        }
+
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .tab-btn {
+            background-color: #fff;
+            border: 2px solid var(--primary-pink);
+            color: var(--primary-pink);
+            padding: 12px 30px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background-color: var(--primary-pink);
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(255, 75, 139, 0.4);
+        }
+
+        /* Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--soft-pink);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(255, 75, 139, 0.25);
+        }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--soft-pink);
+            color: var(--deep-pink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 15px;
+            transition: var(--transition);
+        }
+
+        .menu-card:hover .card-icon {
+            background-color: var(--primary-pink);
+            color: #fff;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--dark-text);
+            margin-bottom: 15px;
+        }
+
+        .order-btn {
+            background: linear-gradient(45deg, var(--primary-pink), var(--deep-pink));
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .order-btn:hover {
+            opacity: 0.9;
+            transform: scale(1.03);
+        }
+
+        /* Order Info Floating Section */
+        .info-card {
+            background: linear-gradient(135deg, #ffffff, var(--soft-pink));
+            border-right: 6px solid var(--deep-pink);
+            border-radius: 15px;
+            padding: 20px 30px;
+            margin: 40px auto;
+            max-width: 900px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .info-card i {
+            font-size: 2.5rem;
+            color: var(--deep-pink);
+        }
+
+        .info-card p {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--dark-text);
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background-color: #25d366;
+            color: #fff;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4);
+            text-decoration: none;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1e1e1e;
+            color: #fff;
+            padding: 40px 20px 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            margin: 10px 0;
+        }
+
+        .footer-socials a {
+            color: #fff;
+            background-color: rgba(255,255,255,0.1);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .footer-socials a:hover {
+            background-color: var(--primary-pink);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            width: 100%;
+            font-size: 1rem;
+            color: #aaa;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .info-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .category-tabs {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Notice Bar -->
+    <div class="announcement-bar">
+        <i class="fa-solid fa-clock"></i>
+        <span>برجاء الطلب قبل الميعاد ب 24 ساعة</span>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo-container">
+                <img src="https://ibb.co/MmvJ052" alt="لوجو متجر ورود للحلويات والمأكولات" class="logo-img">
+                <span class="logo-text">ورود</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#sweet"><i class="fa-solid fa-cake-candles"></i> الحلويات</a></li>
+                <li><a href="#salty"><i class="fa-solid fa-utensils"></i> الحادق</a></li>
+                <li><a href="https://wa.me/201129868169" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل معنا</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Banner Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">أهلاً بكم في متجر ورود</h1>
+            <p class="hero-subtitle">نقدم لكم أشهى الحلويات وألذ الوجبات الشرقية والغربية</p>
+        </div>
+    </section>
+
+    <!-- Order Time Notice Card -->
+    <div class="menu-container" style="margin-top: 30px; margin-bottom: 10px;">
+        <div class="info-card">
+            <i class="fa-solid fa-calendar-check"></i>
+            <div>
+                <p>ملاحظة هامة للعملاء الكرام:</p>
+                <p style="font-weight: normal; font-size: 1.1rem;">برجاء إرسال الطلب قبل الميعاد بـ 24 ساعة لضمان التحضير بأعلى جودة طازجة!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Section -->
+    <section class="menu-container">
+        <div class="section-header">
+            <h2 class="section-title">قائمة الطعام</h2>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="category-tabs">
+            <button class="tab-btn active" onclick="filterMenu('all')">
+                <i class="fa-solid fa-border-all"></i> الكل
+            </button>
+            <button class="tab-btn" onclick="filterMenu('sweet')">
+                <i class="fa-solid fa-cookie-bite"></i> المنيو الحلو
+            </button>
+            <button class="tab-btn" onclick="filterMenu('salty')">
+                <i class="fa-solid fa-drumstick-bite"></i> المنيو الحادق
+            </button>
+        </div>
+
+        <!-- Menu Cards Grid -->
+        <div class="menu-grid" id="menuGrid">
+
+            <!-- SWEET ITEMS -->
+            <div class="menu-card" data-category="sweet">
+                <div class="card-icon"><i class="fa-solid fa-cake-candles"></i></div>
+                <h3 class="card-title">كيكة شوكولاتة غرقانة في صوص الشوكولاتة</h3>
+                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20كيكة%20شوكولاتة%20غرقانة%20في%20صوص%20الشوكولاتة" target="_blank" class="order-btn">
+                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                </a>
+            </div>
+
+            <div class="menu-card" data-category="sweet">
+                <div class="card-icon"><i class="fa-solid fa-cloud"></i></div>
+                <h3 class="card-title">قشطوطة تريليتشا عشاق المانجو</h3>
+                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20قشطوطة%20تريليتشا%20عشاق%20المانجو" target="_blank" class="order-btn">
+                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                </a>
+            </div>
+
+            <div class="menu-card" data-category="sweet">
+                <div class="card-icon"><i class="fa-solid fa-stroopwafel"></i></div>
+                <h3 class="card-title">جاتوه فانيليا</h3>
+                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20جاتوه%20فانيليا" target="_blank" class="order-btn">
+                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                </a>
+            </div>
+
+            <div class="menu-card" data-category="sweet">
+                <div class="card-icon"><i class="fa-solid fa-cookie"></i></div>
+                <h3 class="card-title">جاتوه شوكولاتة</h3>
+                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20جاتوه%20شوكولاتة" target="_blank" class="order-btn">
+                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                </a>
+            </div>
+
+            <div class="menu-card" data-category="sweet">
+                <div class="card-icon"><i class="fa-solid fa-cookie-bite"></i></div>
+                <h3 class="card-title">كوكيز</h3>
+                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20كوكيز" target="_blank" class="order-btn">
+                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                </a>
+            </div>
+
+            <!-- SALTY ITEMS -->
+            <div class="menu-card" data-category="salty">
+                <div class="card-icon"><i class="fa-solid fa-utensils"></i></div>
+                <h3 class="card-title">شاورما سوري</h3>
+                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20شاورما%20سوري" target="_blank" class="order-btn">
+                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                </a>
+            </div>
+
+            <div class="menu-card" data-category="salty">
+                <div class="card-icon"><i class="fa-solid fa-burger"></i></div>
+                <h3 class="card-title">شاورما مصري</h3>
+                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20شاورما%20مصري" target="_blank" class="order-btn">
+                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                </a>
+            </div>
+
+            <div class="menu-card" data-category="salty">
+                <div class="card-icon"><i class="fa-solid fa-fire-burner"></i></div>
+                <h3 class="card-title">فاهيتا فراخ</h3>
+                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20فاهيتا%20فراخ" target="_blank" class="order-btn">
+                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                </a>
+            </div>
+
+            <div class="menu-card" data-category="salty">
+                <div class="card-icon"><i class="fa-solid fa-bowl-rice"></i></div>
+                <h3 class="card-title">ديك بلدي محشي</h3>
+                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20ديك%20بلدي%20محشي" target="_blank" class="order-btn">
+                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                </a>
+            </div>
+
+            <div class="menu-card" data-category="salty">
+                <div class="card-icon"><i class="fa-solid fa-drumstick-bite"></i></div>
+                <h3 class="card-title">وجبة ربع فرخة (ربع فرخة + أرز + سلطة)</h3>
+                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20وجبة%20ربع%20فرخة" target="_blank" class="order-btn">
+                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                </a>
+            </div>
+
+            <div class="menu-card" data-category="salty">
+                <div class="card-icon"><i class="fa-solid fa-hotdog"></i></div>
+                <h3 class="card-title">وجبة استريبس</h3>
+                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20وجبة%20استريبس" target="_blank" class="order-btn">
+                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                </a>
+            </div>
+
+            <div class="menu-card" data-category="salty">
+                <div class="card-icon"><i class="fa-solid fa-dove"></i></div>
+                <h3 class="card-title">حمام محشي</h3>
+                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20حمام%20محشي" target="_blank" class="order-btn">
+                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                </a>
+            </div>
+
+            <div class="menu-card" data-category="salty">
+                <div class="card-icon"><i class="fa-solid fa-bowl-food"></i></div>
+                <h3 class="card-title">طاجن بامية باللحمة</h3>
+                <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20طلب:%20طاجن%20بامية%20باللحمة" target="_blank" class="order-btn">
+                    <i class="fa-brands fa-whatsapp"></i> اطلب الآن
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/201129868169?text=أهلاً%20متجر%20ورود،%20أريد%20الاستفسار%20عن%20المنيو" class="floating-whatsapp" target="_blank" title="تواصل عبر الواتساب">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="https://ibb.co/MmvJ052" alt="لوجو متجر ورود">
+                <span style="font-size: 1.5rem; font-weight: bold; color: var(--primary-pink);">متجر ورود</span>
+            </div>
+            <p><i class="fa-solid fa-phone"></i> للطلب والتواصل: +20 11 29868169</p>
+            <p><i class="fa-solid fa-clock"></i> تنبيه: برجاء الطلب قبل الميعاد بـ 24 ساعة</p>
+            <div class="copyright">
+                &copy; 2026 جميع الحقوق محفوظة - متجر ورود
+            </div>
+        </div>
+    </footer>
+
+    <!-- Filter Script -->
+    <script>
+        function filterMenu(category) {
+            const cards = document.querySelectorAll('.menu-card');
+            const buttons = document.querySelectorAll('.tab-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
