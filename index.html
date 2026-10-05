@@ -417,6 +417,27 @@
             margin-bottom: 12px;
         }
 
+        /* Option Select Dropdown Styling */
+        .option-select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1.5px solid var(--primary-pink);
+            border-radius: 12px;
+            background-color: #fff;
+            color: var(--dark-text);
+            font-size: 1rem;
+            font-weight: bold;
+            outline: none;
+            margin-bottom: 12px;
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .option-select:focus {
+            box-shadow: 0 0 0 3px rgba(255, 75, 139, 0.2);
+        }
+
         /* Quantity Control */
         .qty-control {
             display: flex;
@@ -866,7 +887,11 @@
             <!-- SWEET ITEMS -->
             <div class="menu-card" data-category="sweet" id="sweet" data-price="25">
                 <div class="card-icon"><i class="fa-solid fa-cake-candles"></i></div>
-                <h3 class="card-title">قطع كيك الشوكولاتة</h3>
+                <h3 class="card-title">قطع كيك</h3>
+                <select class="option-select">
+                    <option value="كريمة">كريمة</option>
+                    <option value="شوكولاتة">شوكولاتة</option>
+                </select>
                 <div class="card-price">25 ج.م</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
@@ -964,24 +989,12 @@
             <!-- SALTY ITEMS -->
             <div class="menu-card" data-category="salty" id="salty" data-price="35">
                 <div class="card-icon"><i class="fa-solid fa-utensils"></i></div>
-                <h3 class="card-title">شاورما فراخ بالعيش السوري</h3>
-                <div class="card-price">35 ج.م</div>
-                <div class="qty-control">
-                    <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
-                    <span class="qty-val">1</span>
-                    <button class="qty-btn" onclick="changeQty(this, 1)">+</button>
-                </div>
-                <div class="card-actions">
-                    <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
-                    </button>
-                </div>
-            </div>
-
-            <div class="menu-card" data-category="salty" data-price="25">
-                <div class="card-icon"><i class="fa-solid fa-burger"></i></div>
-                <h3 class="card-title">شاورما فراخ بالعيش الفينو</h3>
-                <div class="card-price">25 ج.م</div>
+                <h3 class="card-title">شاورما فراخ</h3>
+                <select class="option-select" onchange="updateShawarmaPrice(this)">
+                    <option value="سوري" data-price="35">عيش سوري (35 ج.م)</option>
+                    <option value="فينو" data-price="25">عيش فينو (25 ج.م)</option>
+                </select>
+                <div class="card-price" id="shawarmaPriceDisplay">35 ج.م</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -1205,6 +1218,14 @@
             qtySpan.textContent = currentVal;
         }
 
+        function updateShawarmaPrice(selectElem) {
+            const selectedOption = selectElem.options[selectElem.selectedIndex];
+            const price = parseFloat(selectedOption.getAttribute('data-price'));
+            const card = selectElem.closest('.menu-card');
+            card.setAttribute('data-price', price);
+            card.querySelector('#shawarmaPriceDisplay').textContent = price + ' ج.م';
+        }
+
         function updateCartItemQty(index, delta) {
             cart[index].qty += delta;
             if (cart[index].qty <= 0) {
@@ -1215,9 +1236,21 @@
 
         function addToCart(btn) {
             const card = btn.closest('.menu-card');
-            const title = card.querySelector('.card-title').textContent.trim();
+            let title = card.querySelector('.card-title').textContent.trim();
             const price = parseFloat(card.getAttribute('data-price')) || 0;
             const qty = parseInt(card.querySelector('.qty-val').textContent);
+
+            const optionSelect = card.querySelector('.option-select');
+            if (optionSelect) {
+                const selectedVal = optionSelect.value;
+                if (title.includes('شاورما')) {
+                    title += ` (بالعيش ال${selectedVal})`;
+                } else if (title.includes('قطع كيك')) {
+                    title += ` (${selectedVal})`;
+                } else {
+                    title += ` (${selectedVal})`;
+                }
+            }
 
             const existingItem = cart.find(item => item.title === title);
             if (existingItem) {
