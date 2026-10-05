@@ -403,11 +403,18 @@
             font-size: 1.35rem;
             font-weight: 700;
             color: var(--dark-text);
-            margin-bottom: 15px;
-            min-height: 50px;
+            margin-bottom: 5px;
+            min-height: 45px;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .card-price {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--deep-pink);
+            margin-bottom: 12px;
         }
 
         /* Quantity Control */
@@ -561,7 +568,25 @@
         .cart-item-title {
             font-weight: bold;
             font-size: 1.05rem;
-            max-width: 220px;
+            max-width: 200px;
+        }
+
+        .cart-item-price {
+            font-size: 0.95rem;
+            color: var(--deep-pink);
+            font-weight: bold;
+        }
+
+        .cart-total-box {
+            background: var(--soft-pink);
+            padding: 15px;
+            border-radius: 12px;
+            margin-top: 15px;
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--deep-pink);
+            border: 1px dashed var(--primary-pink);
         }
 
         /* Customer Form Styles */
@@ -801,7 +826,7 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="hero-title">أهلاً لكم في متجر ورود</h1>
-            <p class="hero-subtitle">نقدم لكم أشهى الحلويات وألذ الوجبات الشرقية والغربية</p>
+            <p class="hero-subtitle">كـل مـا هـو لـذيـذ و عـلـى قـد الإيـد هـتـلاقـيه عـنـدنـا هـنـا فـي.... ورود🌷🌸</p>
         </div>
     </section>
 
@@ -839,9 +864,10 @@
         <div class="menu-grid" id="menuGrid">
 
             <!-- SWEET ITEMS -->
-            <div class="menu-card" data-category="sweet" id="sweet">
+            <div class="menu-card" data-category="sweet" id="sweet" data-price="25">
                 <div class="card-icon"><i class="fa-solid fa-cake-candles"></i></div>
-                <h3 class="card-title">كيكة شوكولاتة غرقانة في صوص الشوكولاتة</h3>
+                <h3 class="card-title">قطع كيك الشوكولاتة</h3>
+                <div class="card-price">25 ج.م</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -855,9 +881,10 @@
             </div>
 
             <!-- Separated Items: Qashtouta & Treleche -->
-            <div class="menu-card" data-category="sweet">
+            <div class="menu-card" data-category="sweet" data-price="25">
                 <div class="card-icon"><i class="fa-solid fa-cloud"></i></div>
                 <h3 class="card-title">قشطوطة مانجو</h3>
+                <div class="card-price">25 ج.م</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -870,9 +897,10 @@
                 </div>
             </div>
 
-            <div class="menu-card" data-category="sweet">
+            <div class="menu-card" data-category="sweet" data-price="25">
                 <div class="card-icon"><i class="fa-solid fa-ice-cream"></i></div>
-                <h3 class="card-title">تريليتشا لعشاق المانجو</h3>
+                <h3 class="card-title">تريليتشا مانجو</h3>
+                <div class="card-price">25 ج.م</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -885,9 +913,10 @@
                 </div>
             </div>
 
-            <div class="menu-card" data-category="sweet">
+            <div class="menu-card" data-category="sweet" data-price="0">
                 <div class="card-icon"><i class="fa-solid fa-stroopwafel"></i></div>
                 <h3 class="card-title">جاتوه فانيليا</h3>
+                <div class="card-price">حسب الطلب</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -900,9 +929,10 @@
                 </div>
             </div>
 
-            <div class="menu-card" data-category="sweet">
+            <div class="menu-card" data-category="sweet" data-price="0">
                 <div class="card-icon"><i class="fa-solid fa-cookie"></i></div>
                 <h3 class="card-title">جاتوه شوكولاتة</h3>
+                <div class="card-price">حسب الطلب</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -915,9 +945,10 @@
                 </div>
             </div>
 
-            <div class="menu-card" data-category="sweet">
+            <div class="menu-card" data-category="sweet" data-price="0">
                 <div class="card-icon"><i class="fa-solid fa-cookie-bite"></i></div>
                 <h3 class="card-title">كوكيز</h3>
+                <div class="card-price">حسب الطلب</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -931,9 +962,10 @@
             </div>
 
             <!-- SALTY ITEMS -->
-            <div class="menu-card" data-category="salty" id="salty">
+            <div class="menu-card" data-category="salty" id="salty" data-price="35">
                 <div class="card-icon"><i class="fa-solid fa-utensils"></i></div>
-                <h3 class="card-title">شاورما سوري</h3>
+                <h3 class="card-title">شاورما فراخ بالعيش السوري</h3>
+                <div class="card-price">35 ج.م</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -946,9 +978,10 @@
                 </div>
             </div>
 
-            <div class="menu-card" data-category="salty">
+            <div class="menu-card" data-category="salty" data-price="25">
                 <div class="card-icon"><i class="fa-solid fa-burger"></i></div>
-                <h3 class="card-title">شاورما مصري</h3>
+                <h3 class="card-title">شاورما فراخ بالعيش الفينو</h3>
+                <div class="card-price">25 ج.م</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -961,9 +994,10 @@
                 </div>
             </div>
 
-            <div class="menu-card" data-category="salty">
+            <div class="menu-card" data-category="salty" data-price="35">
                 <div class="card-icon"><i class="fa-solid fa-fire-burner"></i></div>
                 <h3 class="card-title">فاهيتا فراخ</h3>
+                <div class="card-price">35 ج.م</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -976,9 +1010,10 @@
                 </div>
             </div>
 
-            <div class="menu-card" data-category="salty">
+            <div class="menu-card" data-category="salty" data-price="220">
                 <div class="card-icon"><i class="fa-solid fa-bowl-rice"></i></div>
-                <h3 class="card-title">ديك بلدي محشي</h3>
+                <h3 class="card-title">الديك البلدي</h3>
+                <div class="card-price">220 ج.م</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -991,9 +1026,10 @@
                 </div>
             </div>
 
-            <div class="menu-card" data-category="salty">
+            <div class="menu-card" data-category="salty" data-price="120">
                 <div class="card-icon"><i class="fa-solid fa-drumstick-bite"></i></div>
-                <h3 class="card-title">وجبة ربع فرخة (ربع فرخة + أرز + سلطة)</h3>
+                <h3 class="card-title">وجبة ربع فراخ مع رز وسلطه</h3>
+                <div class="card-price">120 ج.م</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -1006,9 +1042,10 @@
                 </div>
             </div>
 
-            <div class="menu-card" data-category="salty">
+            <div class="menu-card" data-category="salty" data-price="0">
                 <div class="card-icon"><i class="fa-solid fa-hotdog"></i></div>
                 <h3 class="card-title">وجبة استريبس</h3>
+                <div class="card-price">حسب الطلب</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -1021,9 +1058,10 @@
                 </div>
             </div>
 
-            <div class="menu-card" data-category="salty">
+            <div class="menu-card" data-category="salty" data-price="0">
                 <div class="card-icon"><i class="fa-solid fa-dove"></i></div>
                 <h3 class="card-title">حمام محشي</h3>
+                <div class="card-price">حسب الطلب</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -1036,9 +1074,10 @@
                 </div>
             </div>
 
-            <div class="menu-card" data-category="salty">
+            <div class="menu-card" data-category="salty" data-price="0">
                 <div class="card-icon"><i class="fa-solid fa-bowl-food"></i></div>
                 <h3 class="card-title">طاجن بامية باللحمة</h3>
+                <div class="card-price">حسب الطلب</div>
                 <div class="qty-control">
                     <button class="qty-btn" onclick="changeQty(this, -1)">-</button>
                     <span class="qty-val">1</span>
@@ -1065,8 +1104,12 @@
             <div id="cartItemsContainer">
                 <p style="text-align: center; color: #888;">السلة فارغة حالياً</p>
             </div>
+
+            <div id="cartTotalBox" class="cart-total-box" style="display: none;">
+                إجمالي السعر: <span id="cartTotalPrice">0</span> ج.م
+            </div>
             
-            <!-- Customer Form without Address Field -->
+            <!-- Customer Form -->
             <div class="customer-form" id="customerForm" style="display: none;">
                 <h4><i class="fa-solid fa-user-pen"></i> بيانات الطلب والتوصيل</h4>
                 <div class="form-group">
@@ -1076,6 +1119,14 @@
                 <div class="form-group">
                     <label for="custPhone">رقم الهاتف *</label>
                     <input type="tel" id="custPhone" placeholder="رقم الموبايل للتواصل">
+                </div>
+                <div class="form-group">
+                    <label for="deliveryTime">معاد التسليم المطلوب *</label>
+                    <input type="datetime-local" id="deliveryTime">
+                </div>
+                <div class="form-group">
+                    <label for="custAddress">عنوان الاستلام / المحل</label>
+                    <textarea id="custAddress" rows="2" readonly style="background-color: #f9f9f9; color: #555;">الأقصر - الطود - العديسات قبلي - نجع علوان - أمام مسجد الشيخ سلطان - منزل الأستاذ أحمد يوسف</textarea>
                 </div>
                 <div class="form-group">
                     <label for="custNotes">ملاحظات إضافية (اختياري)</label>
@@ -1097,6 +1148,7 @@
                 <img src="https://i.ibb.co/t9G1rPm/Elegant-bakery-and-patisserie-logo-design-for-a-ca-1791023084823-removebg-preview.png" alt="لوجو متجر ورود">
                 <span style="font-size: 1.5rem; font-weight: bold; color: var(--primary-pink);">متجر ورود</span>
             </div>
+            <p><i class="fa-solid fa-location-dot"></i> العنوان: الأقصر الطود العديسات قبلي نجع علوان امام مسجد الشيخ سلطان منزل الاستاذ احمد يوسف</p>
             <p><i class="fa-solid fa-phone"></i> للطلب والتواصل: +20 11 29868169</p>
             <p><i class="fa-solid fa-clock"></i> تنبيه: برجاء الطلب قبل الميعاد بـ 24 ساعة</p>
             <div class="copyright">
@@ -1153,16 +1205,25 @@
             qtySpan.textContent = currentVal;
         }
 
+        function updateCartItemQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
         function addToCart(btn) {
             const card = btn.closest('.menu-card');
             const title = card.querySelector('.card-title').textContent.trim();
+            const price = parseFloat(card.getAttribute('data-price')) || 0;
             const qty = parseInt(card.querySelector('.qty-val').textContent);
 
             const existingItem = cart.find(item => item.title === title);
             if (existingItem) {
                 existingItem.qty += qty;
             } else {
-                cart.push({ title, qty });
+                cart.push({ title, price, qty });
             }
 
             updateCartUI();
@@ -1178,6 +1239,8 @@
             const cartCount = document.getElementById('cartCount');
             const cartItemsContainer = document.getElementById('cartItemsContainer');
             const customerForm = document.getElementById('customerForm');
+            const cartTotalBox = document.getElementById('cartTotalBox');
+            const cartTotalPrice = document.getElementById('cartTotalPrice');
             
             const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
             cartCount.textContent = totalItems;
@@ -1185,22 +1248,37 @@
             if (cart.length === 0) {
                 cartItemsContainer.innerHTML = '<p style="text-align: center; color: #888;">السلة فارغة حالياً</p>';
                 customerForm.style.display = 'none';
+                cartTotalBox.style.display = 'none';
                 return;
             }
 
             customerForm.style.display = 'block';
+            cartTotalBox.style.display = 'block';
             cartItemsContainer.innerHTML = '';
+            
+            let totalPrice = 0;
+
             cart.forEach((item, index) => {
+                const itemTotal = item.price * item.qty;
+                totalPrice += itemTotal;
+
                 cartItemsContainer.innerHTML += `
                     <div class="cart-item">
                         <div>
                             <div class="cart-item-title">${item.title}</div>
-                            <small style="color: var(--primary-pink); font-weight:bold;">الكمية: ${item.qty}</small>
+                            <div class="cart-item-price">${item.price > 0 ? (item.price + ' ج.م × ' + item.qty + ' = ' + itemTotal + ' ج.م') : 'سعر متغير / حسب الطلب'}</div>
+                            <div class="qty-control" style="margin: 5px 0 0 0; padding: 2px 8px;">
+                                <button class="qty-btn" style="width:22px; height:22px; font-size:0.9rem;" onclick="updateCartItemQty(${index}, -1)">-</button>
+                                <span class="qty-val" style="font-size:1rem; width:18px;">${item.qty}</span>
+                                <button class="qty-btn" style="width:22px; height:22px; font-size:0.9rem;" onclick="updateCartItemQty(${index}, 1)">+</button>
+                            </div>
                         </div>
                         <i class="fa-solid fa-trash" style="color:#e74c3c; cursor:pointer;" onclick="removeFromCart(${index})"></i>
                     </div>
                 `;
             });
+
+            cartTotalPrice.textContent = totalPrice;
         }
 
         function toggleCart(forceOpen = false) {
@@ -1223,10 +1301,12 @@
 
             const name = document.getElementById('custName').value.trim();
             const phone = document.getElementById('custPhone').value.trim();
+            const deliveryTime = document.getElementById('deliveryTime').value;
+            const address = document.getElementById('custAddress').value.trim();
             const notes = document.getElementById('custNotes').value.trim();
 
-            if (!name || !phone) {
-                alert('يرجى ملء كافة البيانات المطلوبة (الاسم ورقم الهاتف) لإتمام الطلب.');
+            if (!name || !phone || !deliveryTime) {
+                alert('يرجى ملء كافة البيانات المطلوبة (الاسم، رقم الهاتف، وميعاد التسليم) لإتمام الطلب.');
                 return;
             }
 
@@ -1235,14 +1315,22 @@
             msg += "👤 *بيانات العميل:*\n";
             msg += `• *الاسم:* ${name}\n`;
             msg += `• *رقم الهاتف:* ${phone}\n`;
+            msg += `• *معاد التسليم:* ${deliveryTime.replace('T', ' ')}\n`;
             if (notes) {
                 msg += `• *ملاحظات:* ${notes}\n`;
             }
 
             msg += "\n🛒 *تفاصيل الطلب:*\n";
+            let totalCalc = 0;
             cart.forEach((item, i) => {
-                msg += `${i + 1}. ${item.title} (الكمية: ${item.qty})\n`;
+                const sub = item.price * item.qty;
+                totalCalc += sub;
+                msg += `${i + 1}. ${item.title} (الكمية: ${item.qty}) ${item.price > 0 ? '- ' + sub + ' ج.م' : ''}\n`;
             });
+
+            if (totalCalc > 0) {
+                msg += `\n💰 *إجمالي السعر:* ${totalCalc} جنيه مصري`;
+            }
 
             window.open(`https://wa.me/201129868169?text=${encodeURIComponent(msg)}`, '_blank');
         }
