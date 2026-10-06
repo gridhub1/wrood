@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>متجر ورود | أشهى الحلويات والمأكولات</title>
 
     <!-- SEO Meta Tags -->
@@ -29,7 +29,6 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Google Fonts Backup / Custom Local Font Setup -->
     <style>
         @font-face {
             font-family: 'ZainCustom';
@@ -55,6 +54,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'ZainCustom', 'Cairo', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -64,7 +64,7 @@
             overflow-x: hidden;
         }
 
-        /* 5 Seconds Preloader Screen */
+        /* Preloader Screen */
         #preloader {
             position: fixed;
             top: 0;
@@ -78,29 +78,32 @@
             justify-content: center;
             align-items: center;
             transition: opacity 0.5s ease, visibility 0.5s ease;
+            padding: 20px;
         }
 
         .loader-logo {
-            width: 180px;
+            width: 150px;
+            max-width: 50vw;
             height: auto;
             margin-bottom: 20px;
             animation: pulse 1.5s infinite ease-in-out;
         }
 
         .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid var(--soft-pink);
-            border-top: 5px solid var(--primary-pink);
+            width: 45px;
+            height: 45px;
+            border: 4px solid var(--soft-pink);
+            border-top: 4px solid var(--primary-pink);
             border-radius: 50%;
             animation: spin 1s linear infinite;
         }
 
         .loader-text {
             margin-top: 15px;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: var(--deep-pink);
+            text-align: center;
         }
 
         @keyframes spin {
@@ -116,18 +119,19 @@
         /* Toast Notification */
         #toast {
             visibility: hidden;
-            min-width: 280px;
+            min-width: 250px;
+            max-width: 90%;
             background-color: var(--deep-pink);
             color: #fff;
             text-align: center;
             border-radius: 30px;
-            padding: 14px 24px;
+            padding: 12px 20px;
             position: fixed;
             z-index: 3000;
             left: 50%;
             bottom: 30px;
             transform: translateX(-50%);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: bold;
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             opacity: 0;
@@ -156,20 +160,20 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
+            padding: 10px 15px;
+            position: relative;
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             text-decoration: none;
         }
 
-        /* Enlarged Logo Styles */
         .logo-img {
-            width: 85px;
-            height: 85px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--primary-pink);
@@ -178,28 +182,44 @@
         }
 
         .logo-text {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             color: var(--deep-pink);
             letter-spacing: 0.5px;
         }
 
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-toggle-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--deep-pink);
+            cursor: pointer;
+            padding: 5px;
+        }
+
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 20px;
             align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
             color: var(--dark-text);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .nav-links a:hover {
@@ -211,33 +231,33 @@
             position: relative;
             cursor: pointer;
             background: linear-gradient(135deg, var(--soft-pink), #ffffff);
-            padding: 8px 18px;
+            padding: 8px 16px;
             border-radius: 25px;
             color: var(--deep-pink) !important;
             border: 1.5px solid var(--primary-pink);
             transition: var(--transition);
             box-shadow: 0 2px 8px rgba(255, 75, 139, 0.15);
+            font-size: 1rem;
         }
 
         .cart-trigger:hover {
             background: var(--primary-pink);
             color: #fff !important;
-            transform: translateY(-2px);
         }
 
         .cart-count {
             position: absolute;
-            top: -8px;
-            right: -8px;
+            top: -6px;
+            right: -6px;
             background: var(--deep-pink);
             color: #fff;
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: bold;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
@@ -245,13 +265,14 @@
         /* Hero Banner Section */
         .hero {
             position: relative;
-            height: 480px;
+            min-height: 350px;
             background: url('https://i.ibb.co/QjJYGsnn/image.png') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: #fff;
+            padding: 40px 15px;
         }
 
         .hero-overlay {
@@ -260,54 +281,55 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(180deg, rgba(216, 27, 96, 0.45) 0%, rgba(20, 20, 20, 0.7) 100%);
+            background: linear-gradient(180deg, rgba(216, 27, 96, 0.55) 0%, rgba(20, 20, 20, 0.75) 100%);
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
             max-width: 800px;
-            padding: 20px;
+            width: 100%;
         }
 
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 2.2rem;
             font-weight: 900;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             text-shadow: 2px 4px 12px rgba(0, 0, 0, 0.6);
             animation: fadeInDown 1s ease;
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
-            background: rgba(255, 255, 255, 0.25);
-            padding: 10px 25px;
-            border-radius: 30px;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 25px;
             backdrop-filter: blur(8px);
             display: inline-block;
             animation: fadeInUp 1s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            line-height: 1.5;
         }
 
         /* Main Menu Section */
         .menu-container {
             max-width: 1200px;
-            margin: 50px auto;
-            padding: 0 20px;
+            margin: 30px auto;
+            padding: 0 15px;
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 25px;
         }
 
         .section-title {
-            font-size: 2.6rem;
+            font-size: 2.1rem;
             color: var(--deep-pink);
             position: relative;
             display: inline-block;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
             font-weight: 800;
         }
 
@@ -317,52 +339,66 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
+            width: 60px;
             height: 4px;
             background-color: var(--accent-gold);
             border-radius: 2px;
         }
 
-        /* Category Tabs */
+        /* Category Tabs - Touch Scroll */
         .category-tabs {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
+            gap: 10px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            -webkit-overflow-scrolling: touch;
+            white-space: nowrap;
+        }
+
+        .category-tabs::-webkit-scrollbar {
+            height: 4px;
+        }
+        
+        .category-tabs::-webkit-scrollbar-thumb {
+            background-color: rgba(255, 75, 139, 0.3);
+            border-radius: 10px;
         }
 
         .tab-btn {
             background-color: #fff;
             border: 2px solid var(--primary-pink);
             color: var(--primary-pink);
-            padding: 10px 28px;
-            font-size: 1.25rem;
+            padding: 8px 20px;
+            font-size: 1.05rem;
             font-weight: bold;
-            border-radius: 30px;
+            border-radius: 25px;
             cursor: pointer;
             transition: var(--transition);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            flex-shrink: 0;
         }
 
         .tab-btn.active, .tab-btn:hover {
             background-color: var(--primary-pink);
             color: #fff;
-            box-shadow: 0 6px 18px rgba(255, 75, 139, 0.35);
+            box-shadow: 0 4px 12px rgba(255, 75, 139, 0.3);
         }
 
         /* Menu Grid */
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
         }
 
         .menu-card {
             background: #fff;
-            border-radius: 20px;
-            padding: 25px;
+            border-radius: 18px;
+            padding: 20px;
             text-align: center;
             box-shadow: var(--card-shadow);
             border: 1px solid rgba(255, 240, 245, 0.8);
@@ -375,67 +411,57 @@
         }
 
         .menu-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(255, 75, 139, 0.22);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(255, 75, 139, 0.18);
         }
 
         .card-icon {
-            width: 75px;
-            height: 75px;
+            width: 65px;
+            height: 65px;
             background-color: var(--soft-pink);
             color: var(--deep-pink);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2.2rem;
-            margin: 0 auto 15px;
+            font-size: 1.8rem;
+            margin: 0 auto 12px;
             transition: var(--transition);
         }
 
-        .menu-card:hover .card-icon {
-            background-color: var(--primary-pink);
-            color: #fff;
-            transform: rotate(10deg) scale(1.08);
-        }
-
         .card-title {
-            font-size: 1.35rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--dark-text);
             margin-bottom: 5px;
-            min-height: 45px;
+            min-height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
+            line-height: 1.3;
         }
 
         .card-price {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 800;
             color: var(--deep-pink);
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         /* Option Select Dropdown Styling */
         .option-select {
             width: 100%;
-            padding: 8px 12px;
+            padding: 8px 10px;
             border: 1.5px solid var(--primary-pink);
-            border-radius: 12px;
+            border-radius: 10px;
             background-color: #fff;
             color: var(--dark-text);
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: bold;
             outline: none;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             cursor: pointer;
             text-align: center;
-            transition: var(--transition);
-        }
-
-        .option-select:focus {
-            box-shadow: 0 0 0 3px rgba(255, 75, 139, 0.2);
         }
 
         /* Quantity Control */
@@ -443,11 +469,11 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 18px;
+            gap: 10px;
+            margin-bottom: 15px;
             background: var(--soft-pink);
-            padding: 6px 14px;
-            border-radius: 25px;
+            padding: 5px 12px;
+            border-radius: 20px;
             width: fit-content;
             margin-left: auto;
             margin-right: auto;
@@ -457,26 +483,21 @@
             background: var(--primary-pink);
             color: #fff;
             border: none;
-            width: 28px;
-            height: 28px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             cursor: pointer;
             font-weight: bold;
-            font-size: 1.1rem;
-            transition: var(--transition);
+            font-size: 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .qty-btn:hover {
-            background: var(--deep-pink);
-        }
-
         .qty-val {
             font-weight: bold;
-            font-size: 1.2rem;
-            width: 25px;
+            font-size: 1.1rem;
+            width: 20px;
         }
 
         .card-actions {
@@ -489,9 +510,9 @@
             background: linear-gradient(45deg, var(--primary-pink), var(--deep-pink));
             color: #fff;
             border: none;
-            padding: 12px 20px;
+            padding: 10px 18px;
             border-radius: 25px;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: bold;
             cursor: pointer;
             transition: var(--transition);
@@ -502,33 +523,27 @@
             box-shadow: 0 4px 12px rgba(216, 27, 96, 0.25);
         }
 
-        .add-cart-btn:hover {
-            opacity: 0.95;
-            transform: scale(1.02);
-            box-shadow: 0 6px 18px rgba(216, 27, 96, 0.35);
-        }
-
         /* Order Info Floating Section */
         .info-card {
             background: linear-gradient(135deg, #ffffff, var(--soft-pink));
-            border-right: 6px solid var(--deep-pink);
-            border-radius: 15px;
-            padding: 20px 30px;
-            margin: 40px auto;
+            border-right: 5px solid var(--deep-pink);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin: 20px auto;
             max-width: 900px;
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             box-shadow: var(--card-shadow);
         }
 
         .info-card i {
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--deep-pink);
         }
 
         .info-card p {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--dark-text);
         }
@@ -538,13 +553,13 @@
             position: fixed;
             top: 0;
             left: -100%;
-            width: 420px;
-            max-width: 90%;
+            width: 380px;
+            max-width: 100%;
             height: 100%;
             background: #fff;
             box-shadow: 5px 0 30px rgba(0,0,0,0.25);
             z-index: 2000;
-            transition: all 0.4s ease;
+            transition: all 0.35s ease-in-out;
             display: flex;
             flex-direction: column;
         }
@@ -556,24 +571,20 @@
         .cart-header {
             background: linear-gradient(90deg, var(--deep-pink), var(--primary-pink));
             color: #fff;
-            padding: 20px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .close-cart {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .close-cart:hover {
-            transform: rotate(90deg);
+            padding: 5px;
         }
 
         .cart-body {
-            padding: 20px;
+            padding: 15px;
             overflow-y: auto;
             flex-grow: 1;
         }
@@ -582,29 +593,29 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0;
+            padding: 10px 0;
             border-bottom: 1px solid var(--soft-pink);
         }
 
         .cart-item-title {
             font-weight: bold;
-            font-size: 1.05rem;
-            max-width: 200px;
+            font-size: 0.95rem;
+            max-width: 180px;
         }
 
         .cart-item-price {
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             color: var(--deep-pink);
             font-weight: bold;
         }
 
         .cart-total-box {
             background: var(--soft-pink);
-            padding: 15px;
-            border-radius: 12px;
+            padding: 12px;
+            border-radius: 10px;
             margin-top: 15px;
             text-align: center;
-            font-size: 1.25rem;
+            font-size: 1.1rem;
             font-weight: bold;
             color: var(--deep-pink);
             border: 1px dashed var(--primary-pink);
@@ -612,27 +623,27 @@
 
         /* Customer Form Styles */
         .customer-form {
-            margin-top: 20px;
+            margin-top: 15px;
             padding-top: 15px;
             border-top: 2px dashed var(--soft-pink);
         }
 
         .customer-form h4 {
             color: var(--deep-pink);
-            margin-bottom: 12px;
-            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
         .form-group {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .form-group label {
             display: block;
-            font-size: 0.95rem;
+            font-size: 0.85rem;
             font-weight: bold;
             margin-bottom: 4px;
             color: var(--dark-text);
@@ -640,22 +651,20 @@
 
         .form-group input, .form-group textarea {
             width: 100%;
-            padding: 10px 12px;
+            padding: 10px;
             border: 1.5px solid #e0e0e0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: var(--transition);
+            border-radius: 8px;
+            font-size: 0.95rem;
             outline: none;
         }
 
         .form-group input:focus, .form-group textarea:focus {
             border-color: var(--primary-pink);
-            box-shadow: 0 0 0 3px rgba(255, 75, 139, 0.15);
         }
 
         .cart-footer {
-            padding: 20px;
-            border-top: 2px solid var(--soft-pink);
+            padding: 15px;
+            border-top: 1.5px solid var(--soft-pink);
             background: #fff;
         }
 
@@ -663,24 +672,17 @@
             background: #25d366;
             color: #fff;
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border: none;
-            border-radius: 30px;
-            font-size: 1.25rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             transition: var(--transition);
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-        }
-
-        .send-cart-btn:hover {
-            background: #1eb956;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.4);
         }
 
         .cart-overlay {
@@ -703,8 +705,8 @@
         footer {
             background-color: #1e1e1e;
             color: #fff;
-            padding: 40px 20px 20px;
-            margin-top: 60px;
+            padding: 30px 15px 15px;
+            margin-top: 40px;
             text-align: center;
         }
 
@@ -714,51 +716,21 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            gap: 15px;
         }
 
         .footer-logo img {
-            width: 80px;
-            height: 80px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             object-fit: cover;
         }
 
-        .footer-socials {
-            display: flex;
-            gap: 15px;
-            margin: 10px 0;
-        }
-
-        .footer-socials a {
-            color: #fff;
-            background-color: rgba(255,255,255,0.1);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            transition: var(--transition);
-            text-decoration: none;
-        }
-
-        .footer-socials a:hover {
-            background-color: var(--primary-pink);
-        }
-
         .copyright {
             border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 20px;
+            padding-top: 15px;
             width: 100%;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #aaa;
         }
 
@@ -773,45 +745,103 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive Design */
+        /* Comprehensive Responsive Rules */
         @media (max-width: 768px) {
-            .navbar {
+            .nav-toggle-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
                 flex-direction: column;
+                padding: 15px 0;
                 gap: 15px;
+                box-shadow: 0 10px 15px rgba(0,0,0,0.08);
+                display: none;
+            }
+
+            .nav-links.show {
+                display: flex;
             }
 
             .logo-img {
-                width: 70px;
-                height: 70px;
+                width: 50px;
+                height: 50px;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                min-height: 280px;
+                padding: 30px 15px;
             }
 
             .hero-title {
-                font-size: 2.3rem;
+                font-size: 1.8rem;
             }
 
             .hero-subtitle {
-                font-size: 1.1rem;
+                font-size: 0.95rem;
             }
 
             .info-card {
                 flex-direction: column;
                 text-align: center;
+                padding: 15px;
             }
 
-            .category-tabs {
-                flex-wrap: wrap;
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 12px;
             }
-            
+
+            .menu-card {
+                padding: 12px;
+                border-radius: 14px;
+            }
+
+            .card-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.4rem;
+                margin-bottom: 8px;
+            }
+
+            .card-title {
+                font-size: 1.05rem;
+                min-height: 35px;
+            }
+
+            .card-price {
+                font-size: 1rem;
+            }
+
+            .add-cart-btn {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+
             .cart-modal {
                 width: 100%;
-                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- 5 Seconds Loading Screen -->
+    <!-- Preloader Screen -->
     <div id="preloader">
         <img src="https://i.ibb.co/t9G1rPm/Elegant-bakery-and-patisserie-logo-design-for-a-ca-1791023084823-removebg-preview.png" alt="متجر ورود" class="loader-logo">
         <div class="spinner"></div>
@@ -828,16 +858,19 @@
                 <img src="https://i.ibb.co/t9G1rPm/Elegant-bakery-and-patisserie-logo-design-for-a-ca-1791023084823-removebg-preview.png" alt="لوجو متجر ورود للحلويات والمأكولات" class="logo-img">
                 <span class="logo-text">ورود</span>
             </a>
-            <ul class="nav-links">
-                <li><a href="#sweet"><i class="fa-solid fa-cake-candles"></i> الحلويات</a></li>
-                <li><a href="#salty"><i class="fa-solid fa-utensils"></i> الحادق</a></li>
-                <li><a href="https://wa.me/201129868169" target="_blank"><i class="fa-brands fa-whatsapp"></i> تواصل معنا</a></li>
-                <li>
-                    <a href="javascript:void(0)" class="cart-trigger" onclick="toggleCart()">
-                        <i class="fa-solid fa-cart-shopping"></i> السلة
-                        <span class="cart-count" id="cartCount">0</span>
-                    </a>
-                </li>
+            <div class="nav-controls">
+                <a href="javascript:void(0)" class="cart-trigger" onclick="toggleCart()">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+                <button class="nav-toggle-btn" onclick="toggleNavMenu()" aria-label="فتح القائمة">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#sweet" onclick="closeNavMenu()"><i class="fa-solid fa-cake-candles"></i> الحلويات</a></li>
+                <li><a href="#salty" onclick="closeNavMenu()"><i class="fa-solid fa-utensils"></i> الحادق</a></li>
+                <li><a href="https://wa.me/201129868169" target="_blank" onclick="closeNavMenu()"><i class="fa-brands fa-whatsapp"></i> تواصل معنا</a></li>
             </ul>
         </nav>
     </header>
@@ -852,12 +885,12 @@
     </section>
 
     <!-- Order Time Notice Card -->
-    <div class="menu-container" style="margin-top: 30px; margin-bottom: 10px;">
+    <div class="menu-container" style="margin-top: 20px; margin-bottom: 10px;">
         <div class="info-card">
             <i class="fa-solid fa-calendar-check"></i>
             <div>
                 <p>ملاحظة هامة للعملاء الكرام:</p>
-                <p style="font-weight: normal; font-size: 1.1rem;">برجاء إرسال الطلب قبل الميعاد بـ 24 ساعة لضمان التحضير بأعلى جودة طازجة!</p>
+                <p style="font-weight: normal; font-size: 0.95rem;">برجاء إرسال الطلب قبل الميعاد بـ 24 ساعة لضمان التحضير بأعلى جودة طازجة!</p>
             </div>
         </div>
     </div>
@@ -900,12 +933,11 @@
                 </div>
                 <div class="card-actions">
                     <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                        <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                     </button>
                 </div>
             </div>
 
-            <!-- Separated Items: Qashtouta & Treleche -->
             <div class="menu-card" data-category="sweet" data-price="25">
                 <div class="card-icon"><i class="fa-solid fa-cloud"></i></div>
                 <h3 class="card-title">قشطوطة </h3>
@@ -917,7 +949,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                        <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                     </button>
                 </div>
             </div>
@@ -933,7 +965,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                        <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                     </button>
                 </div>
             </div>
@@ -949,7 +981,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                        <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                     </button>
                 </div>
             </div>
@@ -965,7 +997,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                        <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                     </button>
                 </div>
             </div>
@@ -981,7 +1013,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                        <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                     </button>
                 </div>
             </div>
@@ -1002,7 +1034,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                        <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                     </button>
                 </div>
             </div>
@@ -1018,7 +1050,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                        <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                     </button>
                 </div>
             </div>
@@ -1034,7 +1066,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                        <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                     </button>
                 </div>
             </div>
@@ -1050,7 +1082,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                        <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                     </button>
                 </div>
             </div>
@@ -1066,7 +1098,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                        <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                     </button>
                 </div>
             </div>
@@ -1082,7 +1114,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                        <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                     </button>
                 </div>
             </div>
@@ -1098,7 +1130,7 @@
                 </div>
                 <div class="card-actions">
                     <button class="add-cart-btn" onclick="addToCart(this)">
-                        <i class="fa-solid fa-cart-plus"></i> إضافه للسلة
+                        <i class="fa-solid fa-cart-plus"></i> إضافة للسلة
                     </button>
                 </div>
             </div>
@@ -1159,7 +1191,7 @@
         <div class="footer-content">
             <div class="footer-logo">
                 <img src="https://i.ibb.co/t9G1rPm/Elegant-bakery-and-patisserie-logo-design-for-a-ca-1791023084823-removebg-preview.png" alt="لوجو متجر ورود">
-                <span style="font-size: 1.5rem; font-weight: bold; color: var(--primary-pink);">متجر ورود</span>
+                <div style="font-size: 1.3rem; font-weight: bold; color: var(--primary-pink); margin-top: 5px;">متجر ورود</div>
             </div>
             <p><i class="fa-solid fa-location-dot"></i> العنوان: الأقصر الطود العديسات قبلي نجع علوان امام مسجد الشيخ سلطان منزل الاستاذ احمد يوسف</p>
             <p><i class="fa-solid fa-phone"></i> للطلب والتواصل: +20 11 29868169</p>
@@ -1170,11 +1202,10 @@
         </div>
     </footer>
 
-    <!-- Interactive Cart Logic & Menu Filter -->
+    <!-- Interactive Logic -->
     <script>
         let cart = [];
 
-        // Preloader Logic - 5 Seconds Timer
         window.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 const preloader = document.getElementById('preloader');
@@ -1182,8 +1213,18 @@
                     preloader.style.opacity = '0';
                     preloader.style.visibility = 'hidden';
                 }
-            }, 5000);
+            }, 3000);
         });
+
+        function toggleNavMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('show');
+        }
+
+        function closeNavMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.remove('show');
+        }
 
         function showToast(message) {
             const toast = document.getElementById('toast');
@@ -1302,11 +1343,11 @@
                             <div class="cart-item-price">${item.price > 0 ? (item.price + ' ج.م × ' + item.qty + ' = ' + itemTotal + ' ج.م') : 'سعر متغير / حسب الطلب'}</div>
                             <div class="qty-control" style="margin: 5px 0 0 0; padding: 2px 8px;">
                                 <button class="qty-btn" style="width:22px; height:22px; font-size:0.9rem;" onclick="updateCartItemQty(${index}, -1)">-</button>
-                                <span class="qty-val" style="font-size:1rem; width:18px;">${item.qty}</span>
+                                <span class="qty-val" style="font-size:0.95rem; width:18px;">${item.qty}</span>
                                 <button class="qty-btn" style="width:22px; height:22px; font-size:0.9rem;" onclick="updateCartItemQty(${index}, 1)">+</button>
                             </div>
                         </div>
-                        <i class="fa-solid fa-trash" style="color:#e74c3c; cursor:pointer;" onclick="removeFromCart(${index})"></i>
+                        <i class="fa-solid fa-trash" style="color:#e74c3c; cursor:pointer; padding: 5px;" onclick="removeFromCart(${index})"></i>
                     </div>
                 `;
             });
@@ -1369,10 +1410,9 @@
         }
     </script>
 
-    <!-- start webpushr tracking code --> 
+    <!-- Webpushr Tracking Code -->
     <script>(function(w,d, s, id) {if(typeof(w.webpushr)!=='undefined') return;w.webpushr=w.webpushr||function(){(w.webpushr.q=w.webpushr.q||[]).push(arguments)};var js, fjs = d.getElementsByTagName(s)[0];js = d.createElement(s); js.id = id;js.src = "https://cdn.webpushr.com/app.min.js";
     fjs.parentNode.appendChild(js);}(window,document, 'script', 'webpushr-jssdk-alternative'));
     webpushr('init','BEROHVekcxrXEZ1TpwrASU6sqnrdyyKnCg8vupLgnBg-V9bWwSYctS87C7SFziwbPrsly7sESTAmsHuFKjFWqgY','https://gridhub1.github.io/wrood/webpushr-sw.js','/wrood/');</script>
-    <!-- end webpushr tracking code -->
 </body>
 </html>
